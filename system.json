@@ -33,7 +33,7 @@
     "gridUnits": "m",
     "primaryTokenAttribute": "attributes.health",
     "secondaryTokenAttribute": null,
-    "url": "https://github.com/DEIN-USERNAME/StargateRPGSystem",
-    "manifest": "https://raw.githubusercontent.com/DEIN-USERNAME/StargateRPGSystem/master/system.json",
-    "download": "https://github.com/DEIN-USERNAME/StargateRPGSystem/archive/refs/heads/master.zip"
+    "url": "https://github.com/onyx-timaeus/StargateRPGSystem",
+    "manifest": "https://raw.githubusercontent.com/onyx-timaeus/StargateRPGSystem/master/system.json",
+    "download": "https://github.com/onyx-timaeus/StargateRPGSystem/archive/refs/heads/master.zip"
 }
