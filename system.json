@@ -1,14 +1,19 @@
 {
-    "name": "sgrpg",
+    "id": "sgrpg",
     "title": "Stargate RPG",
     "description": "System for Stargate RPG created by Wyvern Gaming, https://stargatetherpg.com/",
-    "version": "1.6.1-beta",
-    "templateVersion": 2,
-    "author": "Filip Sádovský",
-    "minimumCoreVersion": "0.8.6",
-    "compatibleCoreVersion": "0.8.9",
-    "scripts": [
+    "version": "2.0.0",
+    "authors": [
+        {
+            "name": "Filip Sádovský",
+            "url": "https://github.com/sadovsf"
+        }
     ],
+    "compatibility": {
+        "minimum": "12",
+        "verified": "13",
+        "maximum": "13"
+    },
     "esmodules": [
         "sgrpg.js"
     ],
@@ -18,16 +23,17 @@
         "styles/item-sheet.css"
     ],
     "packs": [],
-    "dependencies": [],
-    "languages": [],
+    "relationships": {
+        "systems": [],
+        "requires": []
+    },
     "socket": false,
     "initiative": "1d20 + @initiative",
     "gridDistance": 1,
     "gridUnits": "m",
     "primaryTokenAttribute": "attributes.health",
     "secondaryTokenAttribute": null,
-    "url": "https://github.com/sadovsf/StargateRPGSystem",
-    "manifest": "https://raw.githubusercontent.com/sadovsf/StargateRPGSystem/master/system.json",
-    "download": "https://github.com/sadovsf/StargateRPGSystem/releases/download/v1.6.1-beta/sgrpg.zip"
+    "url": "https://github.com/DEIN-USERNAME/StargateRPGSystem",
+    "manifest": "https://raw.githubusercontent.com/DEIN-USERNAME/StargateRPGSystem/master/system.json",
+    "download": "https://github.com/DEIN-USERNAME/StargateRPGSystem/archive/refs/heads/master.zip"
 }
-
