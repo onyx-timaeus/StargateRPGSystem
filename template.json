@@ -30,6 +30,13 @@
                     "fails": 0
                 },
 
+                "death_success1": false,
+                "death_success2": false,
+                "death_success3": false,
+                "death_failure1": false,
+                "death_failure2": false,
+                "death_failure3": false,
+
                 "attributes": {
                     "str": {
                         "value": 10,

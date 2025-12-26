@@ -172,6 +172,8 @@
 .charsheet .spaced {
     justify-content: space-evenly;
 }
+/* Old page1 grid layout - commented out, using new layout below */
+/*
 .charsheet main.page1 {
     display: grid;
     grid-template-columns: 4fr 8fr 5fr 6fr;
@@ -185,6 +187,7 @@
     background-position: center;
     background-color: black;
 }
+*/
 .charsheet main.page2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -233,16 +236,19 @@
     width: 250px;
 }
 
-.charsheet main.character, .charsheet main.background, .charsheet main.credits {
+.charsheet .sg-sheet-body > .tab {
     display: none;
 }
-.charsheet input.tabstoggle[value="character"] ~ main.character, .charsheet input.tabstoggle[value="background"] ~ main.background, .charsheet input.tabstoggle[value="credits"] ~ main.credits {
+
+.charsheet .sg-sheet-body > .tab.active {
     display: grid;
 }
 .charsheet div.tab-as {
     display: flex;
     gap: 10px;
 }
+/* Old section.name CSS - commented out, using new layout below */
+/*
 .charsheet section.name {
     grid-area: name;
     padding: 5px 0px 0px 0px;
@@ -259,9 +265,13 @@
 .charsheet section.name input[type="number"] {
     height: 20px;
 }
+*/
+/* Old grid-area removed - using new layout */
+/*
 .charsheet .attr {
     grid-area: attr;
 }
+*/
 .charsheet .attr .stat {
     background-image: url(https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Stargate-RPG/images/attr.png);
     background-repeat: no-repeat;
@@ -305,6 +315,8 @@
     line-height: 15px;
     text-transform: uppercase;
 }
+/* Old skills, hp, condition CSS - commented out, using new layout below */
+/*
 .charsheet section.skills {
     grid-area: skills;
     padding-left: 10px;
@@ -340,7 +352,6 @@
 .charsheet section.skills a[type="roll"] {
     margin-right: 0px;
     text-transform: uppercase;
-    /* font-size: 1.2em; */
 }
 .charsheet section.skills input[type="number"] {
     margin-left: 5px;
@@ -377,6 +388,10 @@
     font-weight: bold;
     font-size: 12px;
 }
+*/
+
+/* Old prof, ac, speed, saves, bulk, inventory, attacks CSS - commented out, using new layout below */
+/*
 .charsheet div.prof {
     grid-area: prof;
 }
@@ -523,6 +538,7 @@
 .charsheet .attacks img {
     vertical-align: middle;
 }
+*/
 
 .charsheet .background section {
     max-height: 350px;
@@ -601,4 +617,567 @@
 
 .charsheet .sg-sheet-body {
     display: block;
+}
+
+/* New layout styles for adapted Roll20 character sheet */
+
+/* Update main.character grid to accommodate new layout */
+.charsheet main.character {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto auto 1fr auto auto;
+    grid-auto-rows: min-content;
+    width: 850px;
+    min-height: 1000px;
+    background-image: url(https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Stargate-RPG/images/bg.png);
+    background-repeat: no-repeat;
+    background-size: 700px 700px;
+    background-position: center;
+    background-color: black;
+    gap: 5px;
+    padding: 5px;
+}
+
+/* Name section - spans full width */
+.charsheet section.name {
+    grid-column: span 9;
+    padding: 5px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.charsheet section.name > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.charsheet section.name > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.charsheet section.name img.profile-img {
+    border: 2px solid black;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.charsheet section.name .config-button {
+    font-size: 1.2em;
+    color: black;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.charsheet section.name .config-button:hover {
+    color: #87AFC7;
+}
+
+.charsheet section.name label {
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 3px;
+    width: auto;
+}
+
+.charsheet section.name input[type=text] {
+    width: 100%;
+    text-align: center;
+}
+
+.charsheet section.name input[type=number] {
+    height: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.charsheet section.name .row2 {
+    margin-top: 10px;
+}
+
+.charsheet section.name .row2 > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.charsheet section.name .row2 .columnflex {
+    flex-direction: column;
+    align-items: center;
+}
+
+.charsheet section.name .row2 .slash {
+    font-size: 1.5em;
+    font-weight: normal;
+    margin: 0 2px;
+}
+
+.charsheet section.name .row2 button {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    font-size: 0.75em;
+    border: 2px solid black;
+    background-color: transparent;
+    font-weight: bold;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 3px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.charsheet section.name .row2 button:hover {
+    background-color: #87AFC7;
+}
+
+/* Eureka points styling */
+.charsheet section.name div.eureka {
+    display: flex;
+}
+
+.charsheet section.name .row2 div.eureka {
+    align-items: center;
+}
+
+/* Death Save Box */
+.charsheet .deathsave-box {
+    grid-column: span 3;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    margin: 0;
+}
+
+.charsheet .deathsave-box .section.death {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    opacity: 0.9;
+    border: 2px solid black;
+    padding: 15px 10px;
+}
+
+.charsheet .deathsave-box .section.death .txt-btn.large {
+    font-size: 1em;
+    padding: 5px 15px;
+    margin-bottom: 3px;
+    white-space: nowrap;
+}
+
+.charsheet .deathsave-box .death-save-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.charsheet .deathsave-box .gap5.aligned {
+    gap: 5px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.charsheet .deathsave-box input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.charsheet .deathsave-box span {
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-left: 6px;
+}
+
+/* Ability scores - horizontal layout */
+.charsheet .attr {
+    grid-column: span 12;
+    background: white;
+    opacity: 0.9;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 0;
+    justify-content: space-around;
+}
+
+.charsheet .attr .txt-btn.large {
+    text-transform: uppercase;
+}
+
+/* Main content area - skills + right side */
+.charsheet .main-content-area {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+    gap: 5px;
+    margin: 0;
+}
+
+/* Skills section */
+.charsheet .main-content-area .skills {
+    grid-area: unset;
+    margin: 0;
+    padding: 10px;
+    background: white;
+    opacity: 0.9;
+    border: 2px solid black;
+}
+
+.charsheet .main-content-area .skills h3 {
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+
+.charsheet .main-content-area .skills a[type="roll"] {
+    text-transform: capitalize;
+}
+
+.charsheet .main-content-area .skills .skill-ability-label {
+    text-transform: uppercase;
+    font-size: 0.75em;
+    color: #666;
+    align-self: flex-end;
+}
+
+.charsheet .main-content-area .skills .mod {
+    margin: 0px 4px 0px 4px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.charsheet .main-content-area .skills .mod select {
+    height: 15px;
+    font-size: 10px;
+}
+
+.charsheet .main-content-area .skills .skill-mod-revert {
+    cursor: pointer;
+    color: #666;
+    text-decoration: none;
+}
+
+.charsheet .main-content-area .skills .skill-mod-revert:hover {
+    color: #000;
+}
+
+/* Right side container */
+.charsheet .right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Stats container - 4x2 grid */
+.charsheet .stats-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    gap: 5px;
+}
+
+.charsheet .stats-container .stat-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border: 2px solid black;
+    background: white;
+    opacity: 0.9;
+    min-height: 70px;
+    gap: 5px;
+}
+
+.charsheet .stats-container .stat-box label {
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    width: auto;
+    margin: 0;
+    line-height: 1;
+}
+
+.charsheet .stats-container .stat-box input[type=number],
+.charsheet .stats-container .stat-box input[type=text] {
+    height: 28px;
+    padding: 2px;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 50px;
+    text-align: center;
+}
+
+.charsheet .stats-container .stat-box .stat-row {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.charsheet .stats-container .stat-box .stat-row .slash {
+    font-size: 1.2em;
+}
+
+.charsheet .stats-container .stat-box .stat-row input {
+    width: 40px;
+    font-size: 1.1em;
+    height: 26px;
+}
+
+.charsheet .stats-container .stat-box .txt-btn {
+    margin: 0;
+    padding: 2px 6px;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    height: 22px;
+}
+
+/* Saves, condition, and inventory container */
+.charsheet .saves-inventory-container {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    flex: 1;
+    min-height: 200px;
+}
+
+.charsheet .saves-condition-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+
+/* Saves section in new layout */
+.charsheet .saves-inventory-container .saves {
+    margin: 0;
+    flex: 1;
+}
+
+/* Condition section in new layout */
+.charsheet .saves-inventory-container .condition {
+    margin: 0;
+    padding: 8px;
+    flex: 0 0 auto;
+}
+
+/* Inventory section in new layout */
+.charsheet .saves-inventory-container .inventory {
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 8px;
+}
+
+.charsheet .saves-inventory-container .inventory h4 {
+    margin: 5px 0 10px 0;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.charsheet .saves-inventory-container .inventory .inventory-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Weapons section */
+.charsheet section.weapons {
+    grid-column: span 12;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    background: transparent;
+    border: none;
+    opacity: 1;
+    padding: 0;
+}
+
+.charsheet section.weapons h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* Notes section */
+.charsheet .notes-section {
+    grid-column: span 12;
+    margin: 0;
+    padding: 10px;
+    background: white;
+    opacity: 0.9;
+    border: 2px solid black;
+}
+
+.charsheet .notes-section h4 {
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+
+.charsheet .notes-section textarea {
+    width: 100%;
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Utility class */
+.charsheet .gap5 {
+    gap: 5px;
+}
+
+/* Configuration Page */
+.charsheet main.configuration {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+
+.charsheet .advanced-config {
+    background: white;
+    opacity: 0.9;
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.charsheet .advanced-config h3 {
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.charsheet .advanced-config .config-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: 2px solid #666;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+
+.charsheet .advanced-config .config-button:hover {
+    background-color: #87AFC7;
+    border-color: #000;
+}
+
+.charsheet .advanced-config .config-button i {
+    font-size: 1.2em;
+}
+
+.charsheet .dice-config {
+    background: white;
+    opacity: 0.9;
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.charsheet .dice-config h3 {
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.charsheet .dice-config .config-row {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.charsheet .dice-config .config-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.charsheet .dice-config .config-item label {
+    font-weight: bold;
+    font-size: 0.9em;
+    width: auto;
+}
+
+.charsheet .dice-config .config-item select {
+    padding: 5px 10px;
+    font-size: 1em;
+    border: 2px solid #666;
+    border-radius: 3px;
+}
+
+.charsheet .skill-config {
+    background: white;
+    opacity: 0.9;
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.charsheet .skill-config h3 {
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+.charsheet .skill-config p {
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-size: 0.9em;
+    color: #333;
+}
+
+.charsheet .skill-config-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.charsheet .skill-config-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+}
+
+.charsheet .skill-config-row .skill-name {
+    flex: 1;
+    text-transform: capitalize;
+    font-weight: 500;
+    width: auto;
+}
+
+.charsheet .skill-config-row .skillModSelect {
+    flex: 0 0 120px;
+    padding: 2px 5px;
+}
+
+.charsheet .skill-config-row .skill-mod-revert {
+    flex: 0 0 20px;
+    cursor: pointer;
+    color: #666;
+    text-align: center;
+}
+
+.charsheet .skill-config-row .skill-mod-revert:hover {
+    color: #000;
 }

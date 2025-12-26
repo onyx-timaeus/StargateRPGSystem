@@ -1,6 +1,30 @@
 import ActorSheetFlags from "../../apps/actor-flags.js";
 
 export default class SGActorSheet extends ActorSheet {
+    /** Default skill to attribute mappings */
+    static DEFAULT_SKILL_MODS = {
+        acrobatics: "dex",
+        animalhandling: "wis",
+        athletics: "str",
+        culture: "wis",
+        deception: "cha",
+        engineering: "int",
+        history: "int",
+        insight: "wis",
+        intimidation: "cha",
+        investigation: "int",
+        medicine: "wis",
+        nature: "int",
+        perception: "wis",
+        performance: "cha",
+        persuasion: "cha",
+        pilot: "dex",
+        science: "int",
+        sleight: "dex",
+        stealth: "dex",
+        survival: "wis"
+    };
+
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
@@ -64,14 +88,6 @@ export default class SGActorSheet extends ActorSheet {
         this._prepareItemData(data);
         this._prepare_proficient_skills(data);
 
-        data.death_success1 = data.data.deathSaves.sucesses > 0;
-        data.death_success2 = data.data.deathSaves.sucesses > 1;
-        data.death_success3 = data.data.deathSaves.sucesses > 2;
-
-        data.death_failure1 = data.data.deathSaves.fails > 0;
-        data.death_failure2 = data.data.deathSaves.fails > 1;
-        data.death_failure3 = data.data.deathSaves.fails > 2;
-
         data.config = foundry.utils.mergeObject(CONFIG.SGRPG, {
             conditions: {
                 normal: "Normal",
@@ -98,11 +114,14 @@ export default class SGActorSheet extends ActorSheet {
 
         // Rollable skill checks
         html.find('a.txt-btn[type="roll"]').click(event => this._onRollCheck(event));
-        html.find('a.txt-btn[type="roll_deathsave"]').click(event => this._onRollDeathSave(event));
         html.find('a.txt-btn[type="roll_init"]').click(event => this._roll_initiative(event));
         html.find('a.txt-btn[type="roll_moxie"]').click(event => this._roll_moxie(event));
-        html.find('a.txt-btn[type="reset_deathsave"]').click(event => this._reset_deathsave(event));
         html.find('a[type="roll_attack"]').click(event => this._roll_attack(event));
+
+        // Data-action handlers
+        html.find('[data-action="rollTD"]').click(event => this._onRollTensionDie(event));
+        html.find('[data-action="rollHD"]').click(event => this._onRollHitDice(event));
+        html.find('[data-action="rollDeathSave"]').click(event => this._onRollDeathSave(event));
 
         html.find('input[data_type="ability_value"]').change(this._onChangeAbilityValue.bind(this));
         html.find('input[data_type="skill_prof"]').click(event => this._onToggleSkillProficiency(event));
@@ -117,19 +136,30 @@ export default class SGActorSheet extends ActorSheet {
         html.find('.item-reload').click(event => this._onItemReload(event));
 
         html.find('a.config-button').click(this._onConfigMenu.bind(this));
-
-        html.find(".death-save-checkbox").change(event => this._onDeathSaveCheckboxChanged(event));
     }
 
     async _onSkillRestoreDefaultModClicked(event) {
-        const skillName = event.currentTarget.parentElement.parentElement.dataset.skill;
+        event.preventDefault();
+        const skillName = event.currentTarget.parentElement.dataset.skill;
 
-        const defaultValues = game.system.model.Actor[this.actor.type];
-        const defaultSkillMod = defaultValues.skills[skillName].mod;
+        if (!skillName) {
+            console.error("Skill name not found", event.currentTarget);
+            return;
+        }
 
-        await this.actor.update({ [`system.skills.${skillName}.mod`]: defaultSkillMod }, {render: false});
+        const defaultSkillMod = SGActorSheet.DEFAULT_SKILL_MODS[skillName];
 
-        return this.actor.update(this._compileSkillValues());
+        if (!defaultSkillMod) {
+            console.error(`No default mod found for skill: ${skillName}`);
+            return;
+        }
+
+        // Update the skill's mod to the default
+        await this.actor.update({ [`system.skills.${skillName}.mod`]: defaultSkillMod });
+
+        // Now recalculate all skill values
+        const skillUpdates = this._compileSkillValues();
+        return this.actor.update(skillUpdates);
     }
 
     /** @override */
@@ -248,15 +278,15 @@ export default class SGActorSheet extends ActorSheet {
 
     _compileSkillValues() {
         const actorData = this.getData();
-        const skillList = foundry.utils.getProperty(actorData, "data.skills");
-        const savesList = foundry.utils.getProperty(actorData, "data.saves");
-        const currentProfValue = parseInt(foundry.utils.getProperty(actorData, "data.prof"));
+        const skillList = foundry.utils.getProperty(actorData, "system.skills");
+        const savesList = foundry.utils.getProperty(actorData, "system.saves");
+        const currentProfValue = parseInt(foundry.utils.getProperty(actorData, "system.prof"));
 
         let modify = {};
         for(const skillName in skillList) {
             const skill = skillList[skillName]
-            const skillModName = foundry.utils.getProperty(actorData, `data.skills.${skillName}.mod`);
-            let baseVal = parseInt(foundry.utils.getProperty(actorData, `data.attributes.${skillModName}.mod`));
+            const skillModName = foundry.utils.getProperty(actorData, `system.skills.${skillName}.mod`);
+            let baseVal = parseInt(foundry.utils.getProperty(actorData, `system.attributes.${skillModName}.mod`));
             if (skill.proficient) {
                 baseVal += currentProfValue;
             }
@@ -265,8 +295,8 @@ export default class SGActorSheet extends ActorSheet {
 
         for(const saveName in savesList) {
             const save = savesList[saveName]
-            const saveModName = foundry.utils.getProperty(actorData, `data.saves.${saveName}.mod`);
-            let baseVal = parseInt(foundry.utils.getProperty(actorData, `data.attributes.${saveModName}.mod`));
+            const saveModName = foundry.utils.getProperty(actorData, `system.saves.${saveName}.mod`);
+            let baseVal = parseInt(foundry.utils.getProperty(actorData, `system.attributes.${saveModName}.mod`));
             if (save.proficient) {
                 baseVal += currentProfValue;
             }
@@ -386,73 +416,92 @@ export default class SGActorSheet extends ActorSheet {
         });
     }
 
-    _onRollDeathSave(event) {
+    async _onRollDeathSave(event) {
         event.preventDefault();
 
         let r = new Roll("1d20");
-        r.evaluate();
+        await r.evaluate();
         const rollResult = r.total;
 
-        const data = this.actor.system.deathSaves;
-        const curSucess = parseInt(data.sucesses);
-        const curFails = parseInt(data.fails);
-        const curHealth = parseInt(this.actor.system.health.value);
+        // Count current successes and failures
+        const system = this.actor.system;
+        const curSuccesses = [system.death_success1, system.death_success2, system.death_success3].filter(Boolean).length;
+        const curFailures = [system.death_failure1, system.death_failure2, system.death_failure3].filter(Boolean).length;
+        const curHealth = parseInt(system.health.value);
+
+        const updates = {};
 
         if (rollResult == 1) {
-            // 2 fails.
-            if (curHealth == 0 && curFails >= 1) {
-                this.actor.update({
-                    "system.deathSaves.fails": curFails + 2,
-                    "system.condition": "death"
-                });
-            } else {
-                this.actor.update({["system.deathSaves.fails"]: curFails + 2 });
+            // Critical fail: 2 failures
+            if (curFailures === 0) {
+                updates["system.death_failure1"] = true;
+                updates["system.death_failure2"] = true;
+            } else if (curFailures === 1) {
+                if (!system.death_failure2) updates["system.death_failure2"] = true;
+                if (!system.death_failure3) updates["system.death_failure3"] = true;
+            } else if (curFailures === 2) {
+                if (!system.death_failure3) updates["system.death_failure3"] = true;
+                updates["system.condition"] = "death";
             }
         }
-        else if(rollResult == 20) {
-            // sucess + heal.
-            const maxHealth = parseInt(this.actor.system.health.max);
-            this.actor.update({
-                "system.deathSaves.fails": 0,
-                "system.deathSaves.sucesses": 0,
-                "system.health.value": curHealth+1 <= maxHealth ? curHealth+1 : curHealth
-            });
+        else if (rollResult == 20) {
+            // Critical success: heal 1 HP and reset death saves
+            const maxHealth = parseInt(system.health.max);
+            updates["system.death_success1"] = false;
+            updates["system.death_success2"] = false;
+            updates["system.death_success3"] = false;
+            updates["system.death_failure1"] = false;
+            updates["system.death_failure2"] = false;
+            updates["system.death_failure3"] = false;
+            updates["system.health.value"] = Math.min(curHealth + 1, maxHealth);
         }
         else if (rollResult >= 10) {
-            // sucess.
-            if (curSucess >= 2) {
-                this.actor.update({
-                    "system.deathSaves.fails": 0,
-                    "system.deathSaves.sucesses": 0
-                });
-            }
-            else {
-                this.actor.update({[`system.deathSaves.sucesses`]: curSucess + 1 });
+            // Success
+            if (curSuccesses === 0) {
+                updates["system.death_success1"] = true;
+            } else if (curSuccesses === 1) {
+                updates["system.death_success2"] = true;
+            } else if (curSuccesses === 2) {
+                // Third success: stabilize and reset
+                updates["system.death_success1"] = false;
+                updates["system.death_success2"] = false;
+                updates["system.death_success3"] = false;
+                updates["system.death_failure1"] = false;
+                updates["system.death_failure2"] = false;
+                updates["system.death_failure3"] = false;
             }
         }
         else {
-            // fail.
-            if (curHealth == 0 && curFails >= 2) {
-                this.actor.update({
-                    "system.deathSaves.fails": curFails + 1,
-                    "system.condition": "death"
-                });
-            } else {
-                this.actor.update({["system.deathSaves.fails"]: curFails + 1 });
+            // Failure
+            if (curFailures === 0) {
+                updates["system.death_failure1"] = true;
+            } else if (curFailures === 1) {
+                updates["system.death_failure2"] = true;
+            } else if (curFailures === 2) {
+                updates["system.death_failure3"] = true;
+                updates["system.condition"] = "death";
             }
+        }
+
+        if (Object.keys(updates).length > 0) {
+            await this.actor.update(updates);
         }
 
         r.toMessage({
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            flavor: "Death save"
+            flavor: "Death Save"
         });
     }
 
     _reset_deathsave(event) {
         event.preventDefault();
         return this.actor.update({
-            "system.deathSaves.fails": 0,
-            "system.deathSaves.sucesses": 0
+            "system.death_success1": false,
+            "system.death_success2": false,
+            "system.death_success3": false,
+            "system.death_failure1": false,
+            "system.death_failure2": false,
+            "system.death_failure3": false
         });
     }
 
@@ -462,6 +511,43 @@ export default class SGActorSheet extends ActorSheet {
 
     _roll_moxie(event) {
         return ui.notifications.warn("Moxie combat is not implemented, please use different way");
+    }
+
+    /**
+     * Handle rolling the Tension Die
+     * @param {Event} event   The click event
+     * @private
+     */
+    async _onRollTensionDie(event) {
+        event.preventDefault();
+        const tensionDie = this.actor.system.tensionDie || "d6";
+
+        let r = new Roll(`1${tensionDie}`);
+        await r.evaluate();
+
+        r.toMessage({
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            flavor: `Tension Die (${tensionDie})`
+        });
+    }
+
+    /**
+     * Handle rolling the Hit Dice
+     * @param {Event} event   The click event
+     * @private
+     */
+    async _onRollHitDice(event) {
+        event.preventDefault();
+        const hitDice = this.actor.system.hd || "d6";
+        const conMod = this.actor.system.attributes.con.mod || "+0";
+
+        let r = new Roll(`1${hitDice} + ${conMod}`);
+        await r.evaluate();
+
+        r.toMessage({
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            flavor: `Hit Dice (${hitDice} + CON)`
+        });
     }
 
     /**
@@ -480,25 +566,6 @@ export default class SGActorSheet extends ActorSheet {
             break;
         }
         app?.render(true);
-    }
-
-    _onDeathSaveCheckboxChanged(event) {
-        event.preventDefault();
-
-        const isSucess = event.currentTarget.classList.contains("sucess");
-        const chbs = event.currentTarget.parentElement.querySelectorAll('input[type="checkbox"]');
-
-        let val = 0;
-        chbs.forEach(cb => {
-            if (cb.checked) val++;
-        });
-
-        if (isSucess) {
-            return this.actor.update({"system.deathSaves.sucesses": val});
-        }
-        else {
-            return this.actor.update({"system.deathSaves.fails": val});
-        }
     }
 
     /**
