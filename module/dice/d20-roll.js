@@ -43,7 +43,7 @@ export default class D20Roll extends Roll {
     async toMessage(messageData={}, options={}) {
 
         // Evaluate the roll now so we have the results available
-        if ( !this._evaluated ) await this.evaluate({async: true});
+        if ( !this._evaluated ) await this.evaluate();
 
         // Add appropriate advantage mode message flavor and dnd5e roll flags
         messageData.flavor = messageData.flavor || this.options.flavor;

@@ -9,7 +9,12 @@ Hooks.on("renderSceneConfig", (sheet, html, data) => {
         tensionDiceOptions += `<option value="${die}" ${sceneTension === die ? "selected" : ""}>${SGRPG.tensionDice[die]}</option>`
     }
 
-    html.find(`select[name="journal"]`).parent().after(`\
+    // Handle both jQuery and HTMLElement for v13+ compatibility
+    const element = html instanceof HTMLElement ? html : html[0];
+    const journalSelect = element.querySelector(`select[name="journal"]`);
+
+    if (journalSelect && journalSelect.parentElement) {
+        const newContent = `\
         <div class="form-group">
             <label>Scene Tension Level</label>
             <div class="form-fields">
@@ -19,8 +24,10 @@ Hooks.on("renderSceneConfig", (sheet, html, data) => {
                 </select>
             </div>
             <p class="notes">The Tension level can be set to differ from the campaign base value when this Scene is active.</p>
-        </div>`
-    );
+        </div>`;
+
+        journalSelect.parentElement.insertAdjacentHTML('afterend', newContent);
+    }
 
     if (! sheet._minimized) {
         sheet.setPosition(sheet.position);

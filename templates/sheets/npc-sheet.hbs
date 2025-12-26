@@ -118,13 +118,13 @@
                 <div class="flex-group-center editor-wrapper">
                     <h2>GM notes</h2>
                     {{#if isGM}}
-                        {{editor content=data.gm_notes target="data.gm_notes" button=true owner=owner editable=editable rollData=rollData}}
+                        {{editor data.gm_notes target="system.gm_notes" button=true owner=owner editable=editable}}
                     {{/if}}
                 </div>
 
                 <div class="flex-group-center editor-wrapper">
                     <h2>Feats &#38; abilities</h2>
-                    {{editor content=data.details target="data.details" button=true owner=owner editable=editable rollData=rollData}}
+                    {{editor data.details target="system.details" button=true owner=owner editable=editable}}
                 </div>
 
                 <div class="flex-group-center">

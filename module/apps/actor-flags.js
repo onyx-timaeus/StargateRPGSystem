@@ -47,7 +47,7 @@ export default class ActorSheetFlags extends DocumentSheet {
       flag.type = v.type.name;
       flag.isCheckbox = v.type === Boolean;
       flag.isSelect = v.hasOwnProperty('choices');
-      flag.value = getProperty(baseData.flags, `sgrpg.${k}`);
+      flag.value = foundry.utils.getProperty(baseData.flags, `sgrpg.${k}`);
       flags[v.section][`flags.sgrpg.${k}`] = flag;
     }
     return flags;
@@ -60,7 +60,7 @@ export default class ActorSheetFlags extends DocumentSheet {
   /** @override */
   async _updateObject(event, formData) {
     const actor = this.object;
-    let updateData = expandObject(formData);
+    let updateData = foundry.utils.expandObject(formData);
 
     // Unset any flags which are "false"
     let unset = false;
@@ -68,7 +68,7 @@ export default class ActorSheetFlags extends DocumentSheet {
     for ( let [k, v] of Object.entries(flags) ) {
       if ( [undefined, null, "", false, 0].includes(v) ) {
         delete flags[k];
-        if ( hasProperty(actor.flags, `sgrpg.${k}`) ) {
+        if ( foundry.utils.hasProperty(actor.flags, `sgrpg.${k}`) ) {
           unset = true;
           flags[`-=${k}`] = null;
         }

@@ -199,8 +199,16 @@ export default class ItemSg extends Item {
 
 
     static chatListeners(html) {
-        html.on('click', '.card-buttons button', this._onChatCardAction.bind(this));
-        html.on('click', '.item-name', this._onChatCardToggleContent.bind(this));
+        // Handle both jQuery objects (legacy) and HTMLElements (v13+)
+        const element = html instanceof HTMLElement ? html : html[0];
+
+        element.querySelectorAll('.card-buttons button').forEach(btn => {
+            btn.addEventListener('click', this._onChatCardAction.bind(this));
+        });
+
+        element.querySelectorAll('.item-name').forEach(name => {
+            name.addEventListener('click', this._onChatCardToggleContent.bind(this));
+        });
     }
 
     /**

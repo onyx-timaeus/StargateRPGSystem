@@ -5,8 +5,8 @@
     if ( !message.isRoll || !message.isContentVisible ) return;
 
     // Highlight rolls where the first part is a d20 roll
-    const roll = message.roll;
-    if ( !roll.dice.length ) return;
+    const roll = message.rolls?.[0];
+    if ( !roll || !roll.dice?.length ) return;
     const d = roll.dice[0];
 
     // Ensure it is an un-modified d20 roll
@@ -18,11 +18,18 @@
     // Highlight successes and failures
     const critical = d.options.critical || 20;
     const fumble = d.options.fumble || 1;
-    if ( d.total >= critical ) html.find(".dice-total").addClass("critical");
-    else if ( d.total <= fumble ) html.find(".dice-total").addClass("fumble");
+
+    // Handle both jQuery and HTMLElement for v13+ compatibility
+    const element = html instanceof HTMLElement ? html : html[0];
+    const diceTotal = element.querySelector(".dice-total");
+
+    if (!diceTotal) return;
+
+    if ( d.total >= critical ) diceTotal.classList.add("critical");
+    else if ( d.total <= fumble ) diceTotal.classList.add("fumble");
     else if ( d.options.target ) {
-      if ( roll.total >= d.options.target ) html.find(".dice-total").addClass("success");
-      else html.find(".dice-total").addClass("failure");
+      if ( roll.total >= d.options.target ) diceTotal.classList.add("success");
+      else diceTotal.classList.add("failure");
     }
   };
 
@@ -37,7 +44,8 @@
  */
 export const addChatMessageContextOptions = function(html, options) {
   let canApply = li => {
-    const message = game.messages.get(li.data("messageId"));
+    const messageId = li.dataset?.messageId || li.getAttribute?.("data-message-id");
+    const message = game.messages.get(messageId);
     return message?.isRoll && message?.isContentVisible && canvas.tokens?.controlled.length;
   };
   options.push(
@@ -78,7 +86,8 @@ export const addChatMessageContextOptions = function(html, options) {
  * @return {Promise}
  */
 function applyChatCardDamage(li, multiplier) {
-  const message = game.messages.get(li.data("messageId"));
+  const messageId = li.dataset?.messageId || li.getAttribute?.("data-message-id");
+  const message = game.messages.get(messageId);
   const roll = message.roll;
   return Promise.all(canvas.tokens.controlled.map(t => {
     const a = t.actor;

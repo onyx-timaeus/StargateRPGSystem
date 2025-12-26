@@ -3,7 +3,7 @@ import ActorSheetFlags from "../../apps/actor-flags.js";
 export default class SGActorSheet extends ActorSheet {
     /** @override */
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             width: 875,
             height: 900,
             tabs: [{navSelector: ".tabs", contentSelector: ".sg-sheet-body", initial: "character"}]
@@ -72,7 +72,7 @@ export default class SGActorSheet extends ActorSheet {
         data.death_failure2 = data.data.deathSaves.fails > 1;
         data.death_failure3 = data.data.deathSaves.fails > 2;
 
-        data.config = mergeObject(CONFIG.SGRPG, {
+        data.config = foundry.utils.mergeObject(CONFIG.SGRPG, {
             conditions: {
                 normal: "Normal",
                 disadvabilitychecks: "Disadv ability checks",
@@ -248,15 +248,15 @@ export default class SGActorSheet extends ActorSheet {
 
     _compileSkillValues() {
         const actorData = this.getData();
-        const skillList = getProperty(actorData, "data.skills");
-        const savesList = getProperty(actorData, "data.saves");
-        const currentProfValue = parseInt(getProperty(actorData, "data.prof"));
+        const skillList = foundry.utils.getProperty(actorData, "data.skills");
+        const savesList = foundry.utils.getProperty(actorData, "data.saves");
+        const currentProfValue = parseInt(foundry.utils.getProperty(actorData, "data.prof"));
 
         let modify = {};
         for(const skillName in skillList) {
             const skill = skillList[skillName]
-            const skillModName = getProperty(actorData, `data.skills.${skillName}.mod`);
-            let baseVal = parseInt(getProperty(actorData, `data.attributes.${skillModName}.mod`));
+            const skillModName = foundry.utils.getProperty(actorData, `data.skills.${skillName}.mod`);
+            let baseVal = parseInt(foundry.utils.getProperty(actorData, `data.attributes.${skillModName}.mod`));
             if (skill.proficient) {
                 baseVal += currentProfValue;
             }
@@ -265,8 +265,8 @@ export default class SGActorSheet extends ActorSheet {
 
         for(const saveName in savesList) {
             const save = savesList[saveName]
-            const saveModName = getProperty(actorData, `data.saves.${saveName}.mod`);
-            let baseVal = parseInt(getProperty(actorData, `data.attributes.${saveModName}.mod`));
+            const saveModName = foundry.utils.getProperty(actorData, `data.saves.${saveName}.mod`);
+            let baseVal = parseInt(foundry.utils.getProperty(actorData, `data.attributes.${saveModName}.mod`));
             if (save.proficient) {
                 baseVal += currentProfValue;
             }
@@ -363,7 +363,7 @@ export default class SGActorSheet extends ActorSheet {
         let actorData = this.getData();
         let bonusDataPath = event.currentTarget.dataset.bonus;
 
-        let rollData = parseInt(getProperty(actorData, bonusDataPath));
+        let rollData = parseInt(foundry.utils.getProperty(actorData, bonusDataPath));
         if (rollData >= 0) {
             // Make sure there is always sign.
             rollData = "+" + rollData;
@@ -486,10 +486,10 @@ export default class SGActorSheet extends ActorSheet {
         event.preventDefault();
 
         const isSucess = event.currentTarget.classList.contains("sucess");
-        const chbs = $(event.currentTarget.parentElement).find('input[type="checkbox"]');
+        const chbs = event.currentTarget.parentElement.querySelectorAll('input[type="checkbox"]');
 
         let val = 0;
-        chbs.each((i, cb) => {
+        chbs.forEach(cb => {
             if (cb.checked) val++;
         });
 

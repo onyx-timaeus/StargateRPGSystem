@@ -29,8 +29,10 @@
     },
     "socket": false,
     "initiative": "1d20 + @initiative",
-    "gridDistance": 1,
-    "gridUnits": "m",
+    "grid": {
+        "distance": 1,
+        "units": "m"
+    },
     "primaryTokenAttribute": "attributes.health",
     "secondaryTokenAttribute": null,
     "url": "https://github.com/onyx-timaeus/StargateRPGSystem",

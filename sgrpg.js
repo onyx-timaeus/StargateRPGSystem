@@ -42,11 +42,12 @@ Hooks.once("init", function(){
     CONFIG.Combat.initiative.formula = "1d20 + @initiative";
     Combatant.prototype._getInitiativeFormula = _getInitiativeFormula;
 
-    Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("sgrpg", SGItemSheet, {makeDefault: true});
+    // Use DocumentSheetConfig for v13+ compatibility
+    DocumentSheetConfig.unregisterSheet(Item, "core", ItemSheet);
+    DocumentSheetConfig.registerSheet(Item, "sgrpg", SGItemSheet, {makeDefault: true});
 
-    Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("sgrpg", SGActorSheet, { makeDefault: true });
+    DocumentSheetConfig.unregisterSheet(Actor, "core", ActorSheet);
+    DocumentSheetConfig.registerSheet(Actor, "sgrpg", SGActorSheet, {makeDefault: true});
 
 
     game.settings.register("sgrpg", "campaignTension", {
@@ -72,9 +73,11 @@ Hooks.once("ready", function() {
 
 
 
-Hooks.on("renderChatMessage", (app, html, data) => {
-    // Highlight critical success or failure die
-    chat.highlightCriticalSuccessFailure(app, html, data);
+// Use v13+ hook for rendering chat messages
+Hooks.on("renderChatMessageHTML", (app, html, data) => {
+    // Handle both jQuery and HTMLElement for compatibility
+    const element = html instanceof HTMLElement ? html : html[0];
+    chat.highlightCriticalSuccessFailure(app, element, data);
 });
 Hooks.on("getChatLogEntryContext", chat.addChatMessageContextOptions);
 Hooks.on("renderChatLog", (app, html, data) => ItemSg.chatListeners(html));

@@ -1,5 +1,7 @@
 import { SGRPG } from "../config.js";
 
+const { MeasuredTemplate } = foundry.canvas.placeables;
+
 /**
  * A helper class for building MeasuredTemplates for 5e spells and abilities
  * @extends {MeasuredTemplate}
@@ -12,14 +14,14 @@ export default class AbilityTemplate extends MeasuredTemplate {
    * @return {AbilityTemplate|null}     The template object, or null if the item does not produce a template
    */
   static fromItem(item) {
-    const target = getProperty(item, "system.target") || {};
+    const target = foundry.utils.getProperty(item, "system.target") || {};
     const templateShape = SGRPG.areaTargetTypes[target.type];
     if ( !templateShape ) return null;
 
     // Prepare template data
     const templateData = {
       t: templateShape,
-      user: game.user._id,
+      user: game.user.id,
       distance: target.value,
       direction: 0,
       x: 0,
