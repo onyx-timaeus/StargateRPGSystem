@@ -13,7 +13,7 @@ export default class SGActorSheet extends ActorSheet {
     }
 
     get template() {
-        return `systems/sgrpg/templates/sheets/${this.actor.data.type}-sheet.hbs`;
+        return `systems/sgrpg/templates/sheets/${this.actor.type}-sheet.hbs`;
     }
 
 
@@ -21,7 +21,7 @@ export default class SGActorSheet extends ActorSheet {
      * Prepare Character type specific data
      */
     _prepareCharacterData(actorData) {
-        const data = actorData.data;
+        const data = actorData.system;
 
         // Loop through ability scores, and add their modifiers to our sheet output.
         for (let [key, ability] of Object.entries(data.attributes)) {
@@ -47,9 +47,11 @@ export default class SGActorSheet extends ActorSheet {
         };
 
         // The Actor's data
-        const actorData = this.actor.data.toObject(false);
+        const actorData = this.actor.toObject(false);
         data.actor = actorData;
-        data.data = actorData.data;
+        data.system = actorData.system;
+        data.data = actorData.system;  // Keep for template compatibility
+        data.system.tensionDie = game.sgrpg.getTensionDie();
         data.data.tensionDie = game.sgrpg.getTensionDie();
 
         data.items = actorData.items;
@@ -125,7 +127,7 @@ export default class SGActorSheet extends ActorSheet {
         const defaultValues = game.system.model.Actor[this.actor.type];
         const defaultSkillMod = defaultValues.skills[skillName].mod;
 
-        await this.actor.update({ [`data.skills.${skillName}.mod`]: defaultSkillMod }, {render: false});
+        await this.actor.update({ [`system.skills.${skillName}.mod`]: defaultSkillMod }, {render: false});
 
         return this.actor.update(this._compileSkillValues());
     }
@@ -145,7 +147,7 @@ export default class SGActorSheet extends ActorSheet {
             });
             if ( similarItem ) {
                 return similarItem.update({
-                    'data.quantity': similarItem.data.data.quantity + Math.max(itemData.data.quantity, 1)
+                    'system.quantity': similarItem.system.quantity + Math.max(itemData.system.quantity, 1)
                 });
             }
         }
@@ -167,15 +169,15 @@ export default class SGActorSheet extends ActorSheet {
                 continue;
             }
 
-            item.isStack = Number.isNumeric(item.data.quantity) && (item.data.quantity !== 1);
+            item.isStack = Number.isNumeric(item.system.quantity) && (item.system.quantity !== 1);
 
             // Calculate item bulk.
-            const itemBulk = item.data.bulk || 0;
-            const itemCount = (item.isStack ? item.data.quantity : 1);
+            const itemBulk = item.system.bulk || 0;
+            const itemCount = (item.isStack ? item.system.quantity : 1);
             curBulk += itemBulk * itemCount;
-            if (item.type == "weapon" && item.data.ammo) {
-                const ammoBulk = item.data.ammo.bulk;
-                const ammoCount = item.data.ammo.value;
+            if (item.type == "weapon" && item.system.ammo) {
+                const ammoBulk = item.system.ammo.bulk;
+                const ammoCount = item.system.ammo.value;
                 curBulk += ammoBulk * ammoCount;
             }
 
@@ -210,8 +212,8 @@ export default class SGActorSheet extends ActorSheet {
         const attrName = event.currentTarget.parentElement.dataset.attr;
 
         await this.actor.update({
-            [`data.attributes.${attrName}.mod`]: this._calculateAttributeMod(newAttrVal),
-            [`data.attributes.${attrName}.value`]: newAttrVal
+            [`system.attributes.${attrName}.mod`]: this._calculateAttributeMod(newAttrVal),
+            [`system.attributes.${attrName}.value`]: newAttrVal
         }, {render: false});
 
         return this.actor.update(this._compileSkillValues());
@@ -222,7 +224,7 @@ export default class SGActorSheet extends ActorSheet {
         const newProf = parseInt(event.currentTarget.value);
 
         await this.actor.update({
-            "data.prof": newProf
+            "system.prof": newProf
         }, {render: false});
 
         return this.actor.update(this._compileSkillValues());
@@ -232,7 +234,7 @@ export default class SGActorSheet extends ActorSheet {
         event.preventDefault();
         const cb = event.currentTarget;
 
-        await this.actor.update({[cb.name]: cb.checked == true });
+        await this.actor.update({[cb.name]: cb.checked == true }, {render: false});
         return this.actor.update(this._compileSkillValues());
     }
 
@@ -240,7 +242,7 @@ export default class SGActorSheet extends ActorSheet {
         event.preventDefault();
         const select = event.currentTarget;
 
-        await this.actor.update({[select.name]: select.value });
+        await this.actor.update({[select.name]: select.value }, {render: false});
         return this.actor.update(this._compileSkillValues());
     }
 
@@ -258,7 +260,7 @@ export default class SGActorSheet extends ActorSheet {
             if (skill.proficient) {
                 baseVal += currentProfValue;
             }
-            modify[`data.skills.${skillName}.value`] = baseVal < 0 ? baseVal.toString() : "+"+baseVal;
+            modify[`system.skills.${skillName}.value`] = baseVal < 0 ? baseVal.toString() : "+"+baseVal;
         }
 
         for(const saveName in savesList) {
@@ -268,7 +270,7 @@ export default class SGActorSheet extends ActorSheet {
             if (save.proficient) {
                 baseVal += currentProfValue;
             }
-            modify[`data.saves.${saveName}.value`] = baseVal < 0 ? baseVal.toString() : "+"+baseVal;
+            modify[`system.saves.${saveName}.value`] = baseVal < 0 ? baseVal.toString() : "+"+baseVal;
         }
 
 
@@ -299,29 +301,29 @@ export default class SGActorSheet extends ActorSheet {
         const div = event.currentTarget.parentElement.parentElement;
         const item = this.actor.items.get(div.dataset.itemId);
 
-        if (item.data.data.ammo.value == item.data.data.ammo.max) {
+        if (item.system.ammo.value == item.system.ammo.max) {
             return ui.notifications.info("Weapon is already reloaded.");
         }
 
         const ammoItem = item.findAmmunition();
         if (! ammoItem) {
-            if (item.data.data.ammo.target == CONFIG.SGRPG.actionReloadValue) {
+            if (item.system.ammo.target == CONFIG.SGRPG.actionReloadValue) {
                 // Weapon has no magazine, allow free reload.
-                return item.update({"data.ammo.value": item.data.data.ammo.max});
+                return item.update({"system.ammo.value": item.system.ammo.max});
             }
             return ui.notifications.info(`Unable to find magazine to reload '${item.name}'.`);
         }
 
-        const magCount = ammoItem.data.data.quantity || 0;
+        const magCount = ammoItem.system.quantity || 0;
         if (magCount <= 0) {
             return ui.notifications.info(`No more magazines left for '${item.name}' in inventory.`);
         }
 
         await ammoItem.update({
-            "data.quantity": magCount - 1
+            "system.quantity": magCount - 1
         }, {render: false});
 
-        return item.update({"data.ammo.value": item.data.data.ammo.max});
+        return item.update({"system.ammo.value": item.system.ammo.max});
     }
 
     /* -------------------------------------------- */
@@ -391,52 +393,52 @@ export default class SGActorSheet extends ActorSheet {
         r.evaluate();
         const rollResult = r.total;
 
-        const data = this.actor.data.data.deathSaves;
+        const data = this.actor.system.deathSaves;
         const curSucess = parseInt(data.sucesses);
         const curFails = parseInt(data.fails);
-        const curHealth = parseInt(this.actor.data.data.health.value);
+        const curHealth = parseInt(this.actor.system.health.value);
 
         if (rollResult == 1) {
             // 2 fails.
             if (curHealth == 0 && curFails >= 1) {
                 this.actor.update({
-                    "data.deathSaves.fails": curFails + 2,
-                    "data.condition": "death"
+                    "system.deathSaves.fails": curFails + 2,
+                    "system.condition": "death"
                 });
             } else {
-                this.actor.update({["data.deathSaves.fails"]: curFails + 2 });
+                this.actor.update({["system.deathSaves.fails"]: curFails + 2 });
             }
         }
         else if(rollResult == 20) {
             // sucess + heal.
-            const maxHealth = parseInt(this.actor.data.data.health.max);
+            const maxHealth = parseInt(this.actor.system.health.max);
             this.actor.update({
-                "data.deathSaves.fails": 0,
-                "data.deathSaves.sucesses": 0,
-                "data.health.value": curHealth+1 <= maxHealth ? curHealth+1 : curHealth
+                "system.deathSaves.fails": 0,
+                "system.deathSaves.sucesses": 0,
+                "system.health.value": curHealth+1 <= maxHealth ? curHealth+1 : curHealth
             });
         }
         else if (rollResult >= 10) {
             // sucess.
             if (curSucess >= 2) {
                 this.actor.update({
-                    "data.deathSaves.fails": 0,
-                    "data.deathSaves.sucesses": 0
+                    "system.deathSaves.fails": 0,
+                    "system.deathSaves.sucesses": 0
                 });
             }
             else {
-                this.actor.update({[`data.deathSaves.sucesses`]: curSucess + 1 });
+                this.actor.update({[`system.deathSaves.sucesses`]: curSucess + 1 });
             }
         }
         else {
             // fail.
             if (curHealth == 0 && curFails >= 2) {
                 this.actor.update({
-                    "data.deathSaves.fails": curFails + 1,
-                    "data.condition": "death"
+                    "system.deathSaves.fails": curFails + 1,
+                    "system.condition": "death"
                 });
             } else {
-                this.actor.update({["data.deathSaves.fails"]: curFails + 1 });
+                this.actor.update({["system.deathSaves.fails"]: curFails + 1 });
             }
         }
 
@@ -449,8 +451,8 @@ export default class SGActorSheet extends ActorSheet {
     _reset_deathsave(event) {
         event.preventDefault();
         return this.actor.update({
-            "data.deathSaves.fails": 0,
-            "data.deathSaves.sucesses": 0
+            "system.deathSaves.fails": 0,
+            "system.deathSaves.sucesses": 0
         });
     }
 
@@ -492,10 +494,10 @@ export default class SGActorSheet extends ActorSheet {
         });
 
         if (isSucess) {
-            return this.actor.update({"data.deathSaves.sucesses": val});
+            return this.actor.update({"system.deathSaves.sucesses": val});
         }
         else {
-            return this.actor.update({"data.deathSaves.fails": val});
+            return this.actor.update({"system.deathSaves.fails": val});
         }
     }
 

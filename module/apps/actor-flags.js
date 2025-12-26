@@ -68,7 +68,7 @@ export default class ActorSheetFlags extends DocumentSheet {
     for ( let [k, v] of Object.entries(flags) ) {
       if ( [undefined, null, "", false, 0].includes(v) ) {
         delete flags[k];
-        if ( hasProperty(actor._data.flags, `sgrpg.${k}`) ) {
+        if ( hasProperty(actor.flags, `sgrpg.${k}`) ) {
           unset = true;
           flags[`-=${k}`] = null;
         }

@@ -17,7 +17,7 @@
 
     // Create the macro command
     const command = `game.sgrpg.rollItemMacro("${item.name}");`;
-    let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
+    let macro = game.macros.find(m => (m.name === item.name) && (m.command === command));
     if ( !macro ) {
       macro = await Macro.create({
         name: item.name,
@@ -43,7 +43,10 @@
   export function rollItemMacro(itemName) {
     const speaker = ChatMessage.getSpeaker();
     let actor;
-    if ( speaker.token ) actor = game.actors.tokens[speaker.token];
+    if ( speaker.token ) {
+      const token = canvas.tokens.get(speaker.token);
+      actor = token?.actor;
+    }
     if ( !actor ) actor = game.actors.get(speaker.actor);
 
     // Get matching items

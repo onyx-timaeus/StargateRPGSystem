@@ -26,14 +26,15 @@ export default class SGItemSheet extends ItemSheet {
         };
 
         // The Actor's data
-        const itemData = this.item.data.toObject(false);
+        const itemData = this.item.toObject(false);
         data.item = itemData;
-        data.data = itemData.data;
+        data.system = itemData.system;
+        data.data = itemData.system;  // Keep for template compatibility
 
         // Potential consumption targets
         data.abilityConsumptionTargets = this._getItemConsumptionTargets(itemData);
 
-        console.log(data.data);
+        console.log(data.system);
         return data;
     }
 
@@ -50,7 +51,7 @@ export default class SGItemSheet extends ItemSheet {
 
       // Ammunition
       return actor.itemTypes.equip.reduce((ammo, i) =>  {
-        ammo[i.id] = `${i.name} (${i.data.data.quantity})`;
+        ammo[i.id] = `${i.name} (${i.system.quantity})`;
         return ammo;
       }, {});
     }

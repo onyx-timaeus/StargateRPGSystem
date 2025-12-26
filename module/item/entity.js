@@ -8,7 +8,7 @@ export default class ItemSg extends Item {
      * @type {boolean}
      */
     get hasAreaTarget() {
-        const target = this.data.data.target;
+        const target = this.system.target;
         return target && (target.type in CONFIG.SGRPG.areaTargetTypes);
     }
 
@@ -17,14 +17,14 @@ export default class ItemSg extends Item {
      * @type {boolean}
      */
     get hasAttack() {
-        return typeof this.data.data.attackAbility === "string";
+        return typeof this.system.attackAbility === "string";
     }
 
     get consumesAmmunition() {
-        if (! this.data.data.ammo) {
+        if (! this.system.ammo) {
             return false;
         }
-        return this.data.data.ammo.target?.length && Number.isNumeric(this.data.data.ammo.max);
+        return this.system.ammo.target?.length && Number.isNumeric(this.system.ammo.max);
     }
 
     async roll() {
@@ -32,32 +32,32 @@ export default class ItemSg extends Item {
     }
 
     async rollAttack() {
-        const hasAmmo = this.data.data.ammo.value !== null;
+        const hasAmmo = this.system.ammo.value !== null;
 
         if (! this.actor) {
             return ui.notifications.warn("You can only roll for owned items!");
         }
 
-        if (hasAmmo && parseInt(this.data.data.ammo.value) == 0) {
+        if (hasAmmo && parseInt(this.system.ammo.value) == 0) {
             // Item is using ammo but no ammunition is left.
             return ui.notifications.warn("No more ammo for this item!");
         }
 
-        const abilityName = this.data.data.attackAbility;
-        const abilityMod = parseInt(this.actor.data.data.attributes[abilityName].mod);
-        const isProf = this.data.data.isProficient;
+        const abilityName = this.system.attackAbility;
+        const abilityMod = parseInt(this.actor.system.attributes[abilityName].mod);
+        const isProf = this.system.isProficient;
 
-        let rollMacro = "1d20 + " + this.data.data.toHit;
+        let rollMacro = "1d20 + " + this.system.toHit;
         if (parseInt(abilityMod) != 0) {
             rollMacro += " + " + abilityMod;
         }
         if (isProf != 0) {
-            rollMacro += " + " + this.actor.data.data.prof;
+            rollMacro += " + " + this.actor.system.prof;
         }
 
-        const r = new CONFIG.Dice.D20Roll(rollMacro, this.actor.data.data);
+        const r = new CONFIG.Dice.D20Roll(rollMacro, this.actor.system);
         const configured = await r.configureDialog({
-            title: `Attack by ${this.data.name}`,
+            title: `Attack by ${this.name}`,
             defaultRollMode: "normal"
         });
         if (configured === null) {
@@ -66,25 +66,25 @@ export default class ItemSg extends Item {
 
         // If item has some ammunition defined, consume 1.
         if (hasAmmo) {
-            const remainingAmmo = parseInt(this.data.data.ammo.value);
+            const remainingAmmo = parseInt(this.system.ammo.value);
             if (remainingAmmo <= 0) {
                 // Double check that ammo count did not change while in dialog.
                 return ui.notifications.warn("No more ammo for this item!");
             }
-            await this.update({"data.ammo.value": remainingAmmo - 1});
+            await this.update({"system.ammo.value": remainingAmmo - 1});
         }
 
         let messageData = {
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            flavor: "Attacks using " + this.data.name
+            flavor: "Attacks using " + this.name
         };
 
-        if (this.data.data.atkSnd) { // Check if the sound is set, then check if it exists
-            const resp = await fetch(this.data.data.atkSnd, { method: 'HEAD' });
+        if (this.system.atkSnd) { // Check if the sound is set, then check if it exists
+            const resp = await fetch(this.system.atkSnd, { method: 'HEAD' });
             if (resp.ok) {
-                messageData.sound = this.data.data.atkSnd;
+                messageData.sound = this.system.atkSnd;
             } else {
-                ui.notifications.warn("Attack sound path for " + this.data.name + " could not be resolved: " + this.data.data.atkSnd);
+                ui.notifications.warn("Attack sound path for " + this.name + " could not be resolved: " + this.system.atkSnd);
             }
         }
 
@@ -92,18 +92,18 @@ export default class ItemSg extends Item {
     }
 
     async rollDamage() {
-        const abilityName = this.data.data.attackAbility;
-        const abilityMod = this.actor.data.data.attributes[abilityName].mod;
-        let dmgRoll = this.data.data.dmg;
+        const abilityName = this.system.attackAbility;
+        const abilityMod = this.actor.system.attributes[abilityName].mod;
+        let dmgRoll = this.system.dmg;
 
         if (parseInt(abilityMod) != 0) {
             dmgRoll += " + " + abilityMod;
         }
 
-        const r = new CONFIG.Dice.DamageRoll(dmgRoll, this.actor.data.data);
+        const r = new CONFIG.Dice.DamageRoll(dmgRoll, this.actor.system);
 
         const configured = await r.configureDialog({
-            title: `Damage from ${this.data.name}`,
+            title: `Damage from ${this.name}`,
             defaultRollMode: "normal"
         });
         if (configured === null) {
@@ -112,15 +112,15 @@ export default class ItemSg extends Item {
 
         let messageData = {
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            flavor: "Done damage using " + this.data.name
+            flavor: "Done damage using " + this.name
         };
 
-        if (this.data.data.dmgSnd) { // Check if the sound is set, then check if it exists
-            const resp = await fetch(this.data.data.dmgSnd, { method: 'HEAD' });
+        if (this.system.dmgSnd) { // Check if the sound is set, then check if it exists
+            const resp = await fetch(this.system.dmgSnd, { method: 'HEAD' });
             if (resp.ok) {
-                messageData.sound = this.data.data.dmgSnd;
+                messageData.sound = this.system.dmgSnd;
             } else {
-                ui.notifications.warn("Damage sound path for " + this.data.name + " could not be resolved: " + this.data.data.dmgSnd);
+                ui.notifications.warn("Damage sound path for " + this.name + " could not be resolved: " + this.system.dmgSnd);
             }
         }
 
@@ -128,22 +128,22 @@ export default class ItemSg extends Item {
     }
 
     async consume() {
-        const remainingCount = parseInt(this.data.data.quantity);
+        const remainingCount = parseInt(this.system.quantity);
         if (remainingCount < 1) {
             return ui.notifications.warn("You dont have any more of these items to consume!");
         }
 
         await this.update({
-            "data.quantity": remainingCount - 1
+            "system.quantity": remainingCount - 1
         });
-        return ui.notifications.info(`Item '${this.data.name}' was consumed, ${remainingCount - 1} usages remain.`);
+        return ui.notifications.info(`Item '${this.name}' was consumed, ${remainingCount - 1} usages remain.`);
     }
 
     findAmmunition() {
         if (! this.consumesAmmunition) {
             return null;
         }
-        return this.actor.items.get(this.data.data.ammo.target);
+        return this.actor.items.get(this.system.ammo.target);
     }
 
     /**
@@ -159,7 +159,7 @@ export default class ItemSg extends Item {
         const templateData = {
             actor: this.actor,
             tokenId: token?.uuid || null,
-            item: this.data,
+            item: this,
             data: this.getChatData(),
             hasAttack: this.hasAttack,
             hasAreaTarget: game.user.can("TEMPLATE_CREATE") && this.hasAreaTarget,
@@ -171,7 +171,7 @@ export default class ItemSg extends Item {
             user: game.user._id,
             type: CONST.CHAT_MESSAGE_TYPES.OTHER,
             content: html,
-            flavor: this.data.data.chatFlavor || this.name,
+            flavor: this.system.chatFlavor || this.name,
             speaker: ChatMessage.getSpeaker({actor: this.actor, token}),
             flags: {"core.canPopout": true},
         };
@@ -189,11 +189,11 @@ export default class ItemSg extends Item {
      * @return {Object}               An object of chat data to render
      */
     getChatData(htmlOptions={}) {
-        const data = foundry.utils.deepClone(this.data.data);
+        const data = foundry.utils.deepClone(this.system);
 
         // Rich text description
         data.description = TextEditor.enrichHTML(data.description, htmlOptions);
-        data.labels = this._getItemLabels(this.data);
+        data.labels = this._getItemLabels(this);
         return data;
     }
 
@@ -274,21 +274,21 @@ export default class ItemSg extends Item {
         const labels = [];
 
         if ( item.type === "weapon" ) {
-            if (item.data.ammo && item.data.ammo.target) {
+            if (item.system.ammo && item.system.ammo.target) {
                 // Items consumes some ammo, push reload action informations if any.
-                if (item.data.ammo.reload) {
-                    labels.push("Reload: " + item.data.ammo.reload);
+                if (item.system.ammo.reload) {
+                    labels.push("Reload: " + item.system.ammo.reload);
                 }
             }
-            if (item.data.details.special?.length) {
-                labels.push(item.data.details.special);
+            if (item.system.details.special?.length) {
+                labels.push(item.system.details.special);
             }
 
-            if (item.data.details.type) {
-                labels.push("Damage: " + item.data.details.type);
+            if (item.system.details.type) {
+                labels.push("Damage: " + item.system.details.type);
             }
-            if (item.data.details.sec_type) {
-                labels.push("Sec.damage: " + item.data.details.sec_type);
+            if (item.system.details.sec_type) {
+                labels.push("Sec.damage: " + item.system.details.sec_type);
             }
         }
 

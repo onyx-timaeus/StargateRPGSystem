@@ -10,17 +10,17 @@ export default class ActorSg extends Actor {
     amount = Math.floor(parseInt(amount) * multiplier);
 
     // Deduct damage from temp HP first
-    const tmp = parseInt(this.data.data.temp_health.value) || 0;
+    const tmp = parseInt(this.system.temp_health.value) || 0;
     const dt = amount > 0 ? Math.min(tmp, amount) : 0;
 
     // Remaining goes to health
-    const tmpMax = parseInt(this.data.data.temp_health.max) || 0;
-    const dh = Math.clamped(this.data.data.health.value - (amount - dt), 0, this.data.data.health.max + tmpMax);
+    const tmpMax = parseInt(this.system.temp_health.max) || 0;
+    const dh = Math.clamped(this.system.health.value - (amount - dt), 0, this.system.health.max + tmpMax);
 
     // Update the Actor
     const updates = {
-      "data.temp_health.value": tmp - dt,
-      "data.health.value": dh
+      "system.temp_health.value": tmp - dt,
+      "system.health.value": dh
     };
 
     // Delegate damage application to a hook
@@ -37,7 +37,6 @@ export default class ActorSg extends Actor {
     /** @inheritdoc */
     getRollData() {
         let rollData = super.getRollData();
-        const data = this.data.data; // Get the data in a nicer variable
 
         // Set the Tension Die from the scene, and if necessary, from the campaign
         const tensionDie = game.sgrpg.getTensionDie();
