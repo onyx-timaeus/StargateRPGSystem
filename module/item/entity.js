@@ -47,7 +47,7 @@ export default class ItemSg extends Item {
         const abilityMod = parseInt(this.actor.system.attributes[abilityName].mod);
         const isProf = this.system.isProficient;
 
-        let rollMacro = "1d20 + " + this.system.toHit;
+        let rollMacro = "1d20";
         if (parseInt(abilityMod) != 0) {
             rollMacro += " + " + abilityMod;
         }

@@ -25,6 +25,10 @@
                 "ac": 10,
                 "speed": 6,
 
+                "eureka": 0,
+                "eureka_max": 0,
+                "showEurekaPoints": true,
+
                 "deathSaves": {
                     "sucesses": 0,
                     "fails": 0
@@ -248,7 +252,13 @@
         "templates": {
             "itemDescription": {
                 "description": "",
-                "techLevel": 2
+                "techLevel": 2,
+                "lore": {
+                    "origin": "",
+                    "type": "",
+                    "restriction": "",
+                    "description": ""
+                }
             },
             "physicalItem": {
                 "bulk": 1,
@@ -256,7 +266,6 @@
             },
             "attack": {
                 "attackAbility": "dex",
-                "toHit": "4",
                 "dmg": "1d6",
 				"atkSnd" : null,
 				"dmgSnd" : null,

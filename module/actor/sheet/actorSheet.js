@@ -1,4 +1,6 @@
 import ActorSheetFlags from "../../apps/actor-flags.js";
+import WeaponSelector from "../../apps/weapon-selector.js";
+import InventorySelector from "../../apps/inventory-selector.js";
 
 export default class SGActorSheet extends ActorSheet {
     /** Default skill to attribute mappings */
@@ -78,11 +80,29 @@ export default class SGActorSheet extends ActorSheet {
         data.system.tensionDie = game.sgrpg.getTensionDie();
         data.data.tensionDie = game.sgrpg.getTensionDie();
 
+        // Remove undefined skill if it exists (data migration issue)
+        if (data.system.skills && data.system.skills.undefined) {
+            delete data.system.skills.undefined;
+        }
+
         data.items = actorData.items;
         for ( let iData of data.items ) {
           const item = this.actor.items.get(iData._id);
           iData.hasAmmo = item.consumesAmmunition;
           iData.labels = item.labels;
+
+          // Calculate to-hit for weapons
+          if (iData.type === 'weapon') {
+            const attackAbility = iData.system.attackAbility || 'dex';
+            const abilityMod = data.system.attributes[attackAbility]?.mod || '+0';
+            const profBonus = iData.system.isProficient ? parseInt(data.system.prof) : 0;
+
+            // Parse ability mod (it's stored as "+2" or "-1")
+            const abilityNum = parseInt(abilityMod);
+            const totalToHit = abilityNum + profBonus;
+
+            iData.calculatedToHit = totalToHit >= 0 ? `+${totalToHit}` : totalToHit.toString();
+          }
         }
         data.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
         this._prepareItemData(data);
@@ -122,6 +142,8 @@ export default class SGActorSheet extends ActorSheet {
         html.find('[data-action="rollTD"]').click(event => this._onRollTensionDie(event));
         html.find('[data-action="rollHD"]').click(event => this._onRollHitDice(event));
         html.find('[data-action="rollDeathSave"]').click(event => this._onRollDeathSave(event));
+        html.find('[data-action="addWeapon"]').click(event => this._onAddWeapon(event));
+        html.find('[data-action="addInventory"]').click(event => this._onAddItem(event));
 
         html.find('input[data_type="ability_value"]').change(this._onChangeAbilityValue.bind(this));
         html.find('input[data_type="skill_prof"]').click(event => this._onToggleSkillProficiency(event));
@@ -566,6 +588,28 @@ export default class SGActorSheet extends ActorSheet {
             break;
         }
         app?.render(true);
+    }
+
+    /**
+     * Handle opening the item selector dialog (weapons and equipment)
+     * @param {Event} event   The click event
+     * @private
+     */
+    _onAddItem(event) {
+        event.preventDefault();
+        const selector = new InventorySelector(this.actor);
+        selector.render(true);
+    }
+
+    /**
+     * Handle opening the weapon selector dialog (weapons only)
+     * @param {Event} event   The click event
+     * @private
+     */
+    _onAddWeapon(event) {
+        event.preventDefault();
+        const selector = new WeaponSelector(this.actor);
+        selector.render(true);
     }
 
     /**

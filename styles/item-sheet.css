@@ -216,11 +216,27 @@
 }
 
 .itemsheet .tox .tox-editor-container {
-  background: #fff;
+  background: rgba(5, 15, 25, 0.9) !important;
 }
 
 .itemsheet .tox .tox-edit-area {
   padding: 0 8px;
+  background: rgba(5, 15, 25, 0.9) !important;
+}
+
+/* Override TinyMCE editor content background */
+.itemsheet .tox-edit-area__iframe {
+  background: rgba(5, 15, 25, 0.9) !important;
+}
+
+/* Make text visible in TinyMCE editor */
+.itemsheet .tox-edit-area__iframe body {
+  color: #e0e0e0 !important;
+}
+
+.itemsheet .tox-edit-area__iframe body#tinymce {
+  color: #e0e0e0 !important;
+  background-color: rgba(5, 15, 25, 0.9) !important;
 }
 
 .itemsheet .resource-label {

@@ -2,14 +2,23 @@ export default class SGItemSheet extends ItemSheet {
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
           classes: ["sheet", "item", "itemsheet"],
-          width: 520,
-          height: 480,
-          tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
+          width: 720,
+          height: 650,
+          tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "stats" }]
         });
       }
 
     get template() {
         return `systems/sgrpg/templates/sheets/item-sheet.hbs`;
+    }
+
+    _getTabs() {
+        const tabs = super._getTabs();
+        // Set initial tab to stats for all items
+        tabs.forEach(tab => {
+            tab.initial = "stats";
+        });
+        return tabs;
     }
 
     getData(options) {
@@ -54,5 +63,11 @@ export default class SGItemSheet extends ItemSheet {
         ammo[i.id] = `${i.name} (${i.system.quantity})`;
         return ammo;
       }, {});
+    }
+
+    /** @override */
+    async activateEditor(name, options={}, initialContent="") {
+        options.content_style = "body { color: #e0e0e0; background-color: rgba(5, 15, 25, 0.9); } body * { color: #e0e0e0; }";
+        return super.activateEditor(name, options, initialContent);
     }
 }

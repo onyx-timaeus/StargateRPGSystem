@@ -2,37 +2,41 @@
     {{!-- Sheet Header --}}
     <header class="sheet-header">
         {{!-- Header stuff goes here --}}
-        <div class="flexcol image-col">
-            <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="70" width="70"/>
-        </div>
         <div class="header-fields">
             <h1 class="charname flexrow">
+                <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="70" width="70"/>
+                {{#if isWeapon}}
+                <div class="tech-level-box">
+                    <div class="tech-level-label">Tech Level</div>
+                    <input name="system.techLevel" type="text" value="{{data.techLevel}}" data-dtype="Number" class="tech-level-input"/>
+                </div>
+                {{/if}}
                 <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
             </h1>
-            {{#if isWeapon}}
-                {{> "systems/sgrpg/templates/sheets/parts/weapon-header.hbs"}}
-            {{else}}
-                {{> "systems/sgrpg/templates/sheets/parts/equip-header.hbs"}}
-            {{/if}}
         </div>
     </header>
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item active" data-tab="description">Description</a>
-        <a class="item" data-tab="details">Details</a>
+        <a class="item active" data-tab="stats">Stats</a>
+        <a class="item" data-tab="lore">Lore</a>
     </nav>
 
     <section class="sheet-body flexcol">
-        <div class="tab flexrow description" data-tab="description">
-            {{editor data.description target="system.description" button=true owner=owner editable=editable}}
+        {{#if isWeapon}}
+        <div class="tab" data-tab="stats" data-group="primary">
+            {{> "systems/sgrpg/templates/sheets/parts/weapon-header.hbs"}}
         </div>
-        <div class="tab flexrow details" data-tab="details">
-            {{#if isWeapon}}
-                {{> "systems/sgrpg/templates/sheets/parts/weapon-details.hbs"}}
-            {{else}}
-                {{> "systems/sgrpg/templates/sheets/parts/equip-details.hbs"}}
-            {{/if}}
+        <div class="tab" data-tab="lore" data-group="primary">
+            {{> "systems/sgrpg/templates/sheets/parts/weapon-lore.hbs"}}
         </div>
+        {{else}}
+        <div class="tab" data-tab="stats" data-group="primary">
+            {{> "systems/sgrpg/templates/sheets/parts/equip-stats.hbs"}}
+        </div>
+        <div class="tab" data-tab="lore" data-group="primary">
+            {{> "systems/sgrpg/templates/sheets/parts/equip-lore.hbs"}}
+        </div>
+        {{/if}}
     </section>
 </form>

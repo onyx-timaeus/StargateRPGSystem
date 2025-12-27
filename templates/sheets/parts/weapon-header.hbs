@@ -1,20 +1,128 @@
-<div class="resources grid grid-3col">
-    <div class="resource flex-group-center">
-        <label for="data.toHit" class="resource-label">Tech level</label>
-        <div class="resource-content flexrow flex-center flex-between">
-            <input name="data.techLevel" type="text" value="{{data.techLevel}}" data-dtype="Number"/>
+<div class="weapon-config-wrapper">
+    <!-- BASIC STATS -->
+    <div class="weapon-section">
+        <div class="section-title">BASIC STATS</div>
+        <div class="section-content">
+            <div class="weapon-stat-row">
+                <div class="weapon-stat">
+                    <label for="system.bulk">Bulk</label>
+                    <input type="text" name="system.bulk" value="{{data.bulk}}" data-dtype="Number"/>
+                </div>
+                <div class="weapon-stat">
+                    <label for="system.attackAbility">Attack Modifier</label>
+                    <select name="system.attackAbility">
+                        {{selectOptions config.abilities selected=data.attackAbility localize=false}}
+                    </select>
+                </div>
+                <div class="weapon-stat weapon-stat-checkbox">
+                    <label>
+                        <input type="checkbox" name="system.isProficient" {{checked data.isProficient}} />
+                        <span>Has Proficiency</span>
+                    </label>
+                </div>
+            </div>
+            <div class="weapon-stat-row weapon-damage-row">
+                <div class="weapon-stat">
+                    <label for="system.dmg">Damage</label>
+                    <input type="text" name="system.dmg" value="{{data.dmg}}" data-dtype="String"/>
+                </div>
+                <div class="weapon-stat">
+                    <label for="system.details.type">Primary Type</label>
+                    <select name="system.details.type">
+                        {{selectOptions config.attackTypes selected=data.details.type localize=false}}
+                    </select>
+                </div>
+                <div class="weapon-stat">
+                    <label for="system.details.sec_type">Secondary Type</label>
+                    <select name="system.details.sec_type">
+                        <option value=""></option>
+                        {{selectOptions config.attackTypes selected=data.details.sec_type localize=false}}
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="resource flex-group-center">
-        <label for="data.dmg" class="resource-label">Damage</label>
-        <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="data.dmg" value="{{data.dmg}}" data-dtype="String"/>
+
+    <!-- RANGE & TARGET -->
+    <div class="weapon-section">
+        <div class="section-title">RANGE & TARGET</div>
+        <div class="section-content">
+            <div class="weapon-stat-row">
+                <div class="weapon-stat weapon-stat-split">
+                    <label for="system.details.range.normal">Range</label>
+                    <div class="split-inputs">
+                        <input type="text" name="system.details.range.normal" value="{{data.details.range.normal}}" data-dtype="Number" placeholder="Normal"/>
+                        <span class="separator">/</span>
+                        <input type="text" name="system.details.range.max" value="{{data.details.range.max}}" data-dtype="Number" placeholder="Max"/>
+                    </div>
+                </div>
+                <div class="weapon-stat weapon-stat-split">
+                    <label for="system.target.value">Target</label>
+                    <div class="split-inputs">
+                        <input type="text" name="system.target.value" value="{{data.target.value}}" data-dtype="Number" placeholder="#"/>
+                        <select name="system.target.type">
+                            {{#select data.target.type}}
+                                <option value=""></option>
+                                {{#each config.targetTypes as |name key|}}
+                                    <option value="{{key}}">{{name}}</option>
+                                {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="resource flex-group-center">
-        <label for="data.toHit" class="resource-label">To hit</label>
-        <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="data.toHit" value="{{data.toHit}}" data-dtype="String"/>
+
+    <!-- AMMUNITION -->
+    <div class="weapon-section">
+        <div class="section-title">AMMUNITION</div>
+        <div class="section-content">
+            <div class="weapon-stat-row">
+                <div class="weapon-stat weapon-stat-split">
+                    <label for="system.ammo.value">Magazine</label>
+                    <div class="split-inputs">
+                        <input type="text" name="system.ammo.value" value="{{data.ammo.value}}" data-dtype="Number" placeholder="Current"/>
+                        <span class="separator">/</span>
+                        <input type="text" name="system.ammo.max" value="{{data.ammo.max}}" data-dtype="Number" placeholder="Max"/>
+                    </div>
+                </div>
+                <div class="weapon-stat">
+                    <label for="system.ammo.reload">Reload Time</label>
+                    <input type="text" name="system.ammo.reload" value="{{data.ammo.reload}}" data-dtype="String" placeholder="e.g., 1 action"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SPECIAL PROPERTIES -->
+    <div class="weapon-section">
+        <div class="section-title">SPECIAL PROPERTIES</div>
+        <div class="section-content">
+            <textarea name="system.details.special" rows="3" placeholder="Enter special properties, abilities, or notes...">{{data.details.special}}</textarea>
+        </div>
+    </div>
+
+    <!-- AUDIO -->
+    <div class="weapon-section">
+        <div class="section-title">AUDIO</div>
+        <div class="section-content">
+            <div class="weapon-stat-row">
+                <div class="weapon-stat weapon-stat-file">
+                    <label for="system.atkSnd">Attack Sound</label>
+                    <div class="file-input">
+                        <button type="button" class="file-picker" data-type="audio" data-target="system.atkSnd">📁</button>
+                        <input type="text" name="system.atkSnd" value="{{data.atkSnd}}" data-dtype="String" placeholder="Optional"/>
+                    </div>
+                </div>
+                <div class="weapon-stat weapon-stat-file">
+                    <label for="system.dmgSnd">Damage Sound</label>
+                    <div class="file-input">
+                        <button type="button" class="file-picker" data-type="audio" data-target="system.dmgSnd">📁</button>
+                        <input type="text" name="system.dmgSnd" value="{{data.dmgSnd}}" data-dtype="String" placeholder="Optional"/>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

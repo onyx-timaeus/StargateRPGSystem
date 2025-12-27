@@ -1001,20 +1001,26 @@
 }
 
 /* Weapons section */
-.charsheet section.weapons {
+.charsheet .weapons-box {
     grid-column: span 12;
+    margin: 5px;
+    background: #f5f5f5;
+    opacity: 0.9;
+    border: 2px solid black;
+    padding: 15px;
+}
+
+.charsheet section.weapons {
     width: 100%;
     box-sizing: border-box;
     margin: 0;
     background: transparent;
     border: none;
-    opacity: 1;
     padding: 0;
 }
 
 .charsheet section.weapons h2 {
     text-align: center;
-    color: white;
     margin-bottom: 10px;
 }
 

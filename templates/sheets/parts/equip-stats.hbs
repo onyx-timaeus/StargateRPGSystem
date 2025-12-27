@@ -1,0 +1,30 @@
+<div class="equip-config-wrapper">
+    <!-- BASIC INFO -->
+    <div class="equip-section">
+        <div class="section-title">BASIC INFO</div>
+        <div class="section-content">
+            <div class="equip-stat-row">
+                <div class="equip-stat">
+                    <label for="system.techLevel">Tech Level</label>
+                    <input type="text" name="system.techLevel" value="{{data.techLevel}}" data-dtype="Number"/>
+                </div>
+                <div class="equip-stat">
+                    <label for="system.bulk">Bulk</label>
+                    <input type="text" name="system.bulk" value="{{data.bulk}}" data-dtype="Number"/>
+                </div>
+                <div class="equip-stat">
+                    <label for="system.quantity">Quantity</label>
+                    <input type="text" name="system.quantity" value="{{data.quantity}}" data-dtype="Number"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="equip-section equip-description-section">
+        <div class="section-title">DESCRIPTION</div>
+        <div class="section-content">
+            {{editor data.description target="system.description" button=true owner=owner editable=editable}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="weapon-lore-wrapper">
+    <!-- ORIGIN -->
+    <div class="lore-section">
+        <div class="lore-label">Origin</div>
+        <input type="text" name="system.lore.origin" value="{{data.lore.origin}}" data-dtype="String" placeholder="e.g., Ancient, Goa'uld, Tau'ri, Asgard..."/>
+    </div>
+
+    <!-- TYPE -->
+    <div class="lore-section">
+        <div class="lore-label">Type</div>
+        <input type="text" name="system.lore.type" value="{{data.lore.type}}" data-dtype="String" placeholder="e.g., Energy Weapon, Projectile, Staff Weapon..."/>
+    </div>
+
+    <!-- OPERATION RESTRICTION -->
+    <div class="lore-section">
+        <div class="lore-label">Operation Restriction</div>
+        <input type="text" name="system.lore.restriction" value="{{data.lore.restriction}}" data-dtype="String" placeholder="e.g., ATA Gene Required, Naquadah in bloodstream..."/>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="lore-section lore-description">
+        <div class="lore-label">Description</div>
+        {{editor data.lore.description target="system.lore.description" button=true owner=owner editable=editable}}
+    </div>
+</div>

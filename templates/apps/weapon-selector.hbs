@@ -1,0 +1,46 @@
+<div class="weapon-selector-content">
+  <!-- Search bar -->
+  <div class="search-bar">
+    <input type="text" id="weapon-search" placeholder="Search weapons..." />
+  </div>
+
+  <!-- Weapons grid -->
+  <div class="weapons-grid">
+    {{#each weapons as |weapon|}}
+    <div class="weapon-card" data-weapon-id="{{weapon.id}}">
+      <div class="weapon-image">
+        <img src="{{weapon.img}}" alt="{{weapon.name}}" />
+      </div>
+      <div class="weapon-info">
+        <div class="weapon-name">{{weapon.name}}</div>
+        <div class="weapon-stats">
+          <div class="weapon-stat">
+            <span class="stat-label">DMG:</span>
+            <span class="stat-value">{{weapon.system.dmg}}</span>
+          </div>
+          <div class="weapon-stat">
+            <span class="stat-label">Type:</span>
+            <span class="stat-value">{{weapon.system.details.type}}</span>
+          </div>
+          <div class="weapon-stat">
+            <span class="stat-label">Range:</span>
+            <span class="stat-value">{{weapon.system.details.range.normal}}/{{weapon.system.details.range.max}}</span>
+          </div>
+          {{#if weapon.system.ammo.max}}
+          <div class="weapon-stat">
+            <span class="stat-label">Ammo:</span>
+            <span class="stat-value">{{weapon.system.ammo.max}}</span>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  {{#unless weapons.length}}
+  <div class="no-weapons">
+    <p>No weapons found. Create weapon items in the Items directory first.</p>
+  </div>
+  {{/unless}}
+</div>

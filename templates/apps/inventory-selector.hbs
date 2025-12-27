@@ -1,0 +1,97 @@
+<div class="inventory-selector-content">
+  <!-- Tab Navigation -->
+  <nav class="inventory-tabs">
+    <button class="inventory-tab active" data-tab="equipment">
+      <i class="fas fa-box"></i> Equipment
+    </button>
+    <button class="inventory-tab" data-tab="weapons">
+      <i class="fas fa-gun"></i> Weapons
+    </button>
+  </nav>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" id="inventory-search" placeholder="Search items..." />
+    <i class="fas fa-search search-icon"></i>
+  </div>
+
+  <!-- Equipment Tab Content -->
+  <div class="tab-content equipment-tab-content active" data-tab-content="equipment">
+    <div class="items-grid">
+      {{#each equipment as |equip|}}
+      <div class="item-card equip-card" data-item-id="{{equip.id}}" data-item-type="equip">
+        <div class="item-image">
+          <img src="{{equip.img}}" alt="{{equip.name}}" />
+        </div>
+        <div class="item-info">
+          <div class="item-name">{{equip.name}}</div>
+          <div class="item-stats">
+            <div class="item-stat">
+              <span class="stat-label">Bulk:</span>
+              <span class="stat-value">{{equip.system.bulk}}</span>
+            </div>
+            <div class="item-stat">
+              <span class="stat-label">Quantity:</span>
+              <span class="stat-value">{{equip.system.quantity}}</span>
+            </div>
+            {{#if equip.system.techLevel}}
+            <div class="item-stat">
+              <span class="stat-label">Tech:</span>
+              <span class="stat-value">{{equip.system.techLevel}}</span>
+            </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+    {{#unless equipment.length}}
+    <div class="no-items">
+      <p>No equipment found. Create equipment items in the Items directory first.</p>
+    </div>
+    {{/unless}}
+  </div>
+
+  <!-- Weapons Tab Content -->
+  <div class="tab-content weapons-tab-content" data-tab-content="weapons">
+    <div class="items-grid">
+      {{#each weapons as |weapon|}}
+      <div class="item-card weapon-card" data-item-id="{{weapon.id}}" data-item-type="weapon">
+        <div class="item-image">
+          <img src="{{weapon.img}}" alt="{{weapon.name}}" />
+        </div>
+        <div class="item-info">
+          <div class="item-name">{{weapon.name}}</div>
+          <div class="item-stats">
+            <div class="item-stat">
+              <span class="stat-label">DMG:</span>
+              <span class="stat-value">{{weapon.system.dmg}}</span>
+            </div>
+            <div class="item-stat">
+              <span class="stat-label">Type:</span>
+              <span class="stat-value">{{weapon.system.details.type}}</span>
+            </div>
+            <div class="item-stat">
+              <span class="stat-label">Range:</span>
+              <span class="stat-value">{{weapon.system.details.range.normal}}/{{weapon.system.details.range.max}}</span>
+            </div>
+            {{#if weapon.system.ammo.max}}
+            <div class="item-stat">
+              <span class="stat-label">Ammo:</span>
+              <span class="stat-value">{{weapon.system.ammo.max}}</span>
+            </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+    {{#unless weapons.length}}
+    <div class="no-items">
+      <p>No weapons found. Create weapon items in the Items directory first.</p>
+    </div>
+    {{/unless}}
+  </div>
+</div>

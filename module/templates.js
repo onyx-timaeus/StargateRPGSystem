@@ -12,6 +12,9 @@
       "systems/sgrpg/templates/sheets/parts/npc-details.hbs",
       "systems/sgrpg/templates/sheets/parts/equip-header.hbs",
       "systems/sgrpg/templates/sheets/parts/weapon-header.hbs",
+      "systems/sgrpg/templates/sheets/parts/weapon-lore.hbs",
+      "systems/sgrpg/templates/sheets/parts/equip-stats.hbs",
+      "systems/sgrpg/templates/sheets/parts/equip-lore.hbs",
 
       // Actor Sheet Partials
       "systems/sgrpg/templates/sheets/parts/vehicle-details.hbs",
