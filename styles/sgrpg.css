@@ -343,10 +343,10 @@
 .weapon-section {
     margin-bottom: 8px;
     margin-top: 0;
-    border: 1px solid #0a2540;
+    border: 1px solid #2a2a2e;
     border-radius: 4px;
     overflow: hidden;
-    background: rgba(10, 37, 64, 0.4);
+    background: rgba(35, 35, 40, 0.4);
 }
 
 .weapon-section:first-child {
@@ -359,15 +359,15 @@
 
 /* Section titles - cyan headers */
 .section-title {
-    background: linear-gradient(90deg, #0a2540 0%, #0f3460 100%);
-    color: #00d4ff;
+    background: linear-gradient(90deg, #2a2a2e 0%, #3a3a3e 100%);
+    color: #6a6a6f;
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 6px 12px;
-    border-bottom: 1px solid #00d4ff;
-    text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+    border-bottom: 1px solid #6a6a6f;
+    text-shadow: 0 0 5px rgba(90, 120, 140, 0.5);
 }
 
 /* Section content */
@@ -396,7 +396,7 @@
 }
 
 .weapon-stat label {
-    color: #5eb3d6;
+    color: #a8a8a8;
     font-size: 9px;
     font-weight: 600;
     text-transform: uppercase;
@@ -407,10 +407,10 @@
 .weapon-stat input[type="text"],
 .weapon-stat input[type="number"],
 .weapon-stat select {
-    background: rgba(5, 15, 25, 0.8);
-    border: 1px solid #1a4d6d;
+    background: rgba(25, 25, 30, 0.8);
+    border: 1px solid #4a4a4f;
     border-radius: 3px;
-    color: #d0e7f5;
+    color: #e0e0e0;
     padding: 5px 8px;
     font-size: 12px;
     transition: all 0.2s ease;
@@ -419,9 +419,9 @@
 .weapon-stat input[type="text"]:focus,
 .weapon-stat input[type="number"]:focus,
 .weapon-stat select:focus {
-    border-color: #00d4ff;
-    background: rgba(5, 15, 25, 1);
-    box-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
+    border-color: #6a6a6f;
+    background: rgba(25, 25, 30, 1);
+    box-shadow: 0 0 5px rgba(90, 120, 140, 0.3);
     outline: none;
 }
 
@@ -437,8 +437,8 @@
 }
 
 .weapon-stat select option {
-    background: #0a1929;
-    color: #d0e7f5;
+    background: #1a1a1a;
+    color: #e0e0e0;
 }
 
 /* Split inputs (range, magazine, target) */
@@ -454,7 +454,7 @@
 }
 
 .split-inputs .separator {
-    color: #00d4ff;
+    color: #6a6a6f;
     font-weight: bold;
     font-size: 14px;
     flex-shrink: 0;
@@ -465,7 +465,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #d0e7f5;
+    color: #e0e0e0;
     font-size: 11px;
     cursor: pointer;
     padding: 5px 0;
@@ -475,7 +475,7 @@
     width: 16px;
     height: 16px;
     cursor: pointer;
-    accent-color: #00d4ff;
+    accent-color: #6a6a6f;
 }
 
 .weapon-stat-checkbox span {
@@ -490,9 +490,9 @@
 }
 
 .file-input button.file-picker {
-    background: #0f3460;
-    border: 1px solid #00d4ff;
-    color: #00d4ff;
+    background: #3a3a3e;
+    border: 1px solid #6a6a6f;
+    color: #6a6a6f;
     padding: 5px 10px;
     border-radius: 3px;
     cursor: pointer;
@@ -502,9 +502,9 @@
 }
 
 .file-input button.file-picker:hover {
-    background: #00d4ff;
-    color: #0a1929;
-    box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
+    background: #6a6a6f;
+    color: #1a1a1a;
+    box-shadow: 0 0 8px rgba(90, 120, 140, 0.4);
 }
 
 .file-input input {
@@ -514,10 +514,10 @@
 /* Special properties textarea */
 .section-content textarea {
     width: 100%;
-    background: rgba(5, 15, 25, 0.8);
-    border: 1px solid #1a4d6d;
+    background: rgba(25, 25, 30, 0.8);
+    border: 1px solid #4a4a4f;
     border-radius: 3px;
-    color: #d0e7f5;
+    color: #e0e0e0;
     padding: 8px;
     font-size: 12px;
     font-family: inherit;
@@ -528,9 +528,9 @@
 }
 
 .section-content textarea:focus {
-    border-color: #00d4ff;
-    background: rgba(5, 15, 25, 1);
-    box-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
+    border-color: #6a6a6f;
+    background: rgba(25, 25, 30, 1);
+    box-shadow: 0 0 5px rgba(90, 120, 140, 0.3);
     outline: none;
 }
 
@@ -542,21 +542,21 @@
 /* Weapon Description Section */
 .weapon-description-section {
     padding: 12px;
-    background: rgba(10, 37, 64, 0.3);
+    background: rgba(35, 35, 40, 0.3);
     border-radius: 4px;
     margin: 0 0 10px 0;
-    border: 1px solid #0a2540;
+    border: 1px solid #2a2a2e;
 }
 
 .weapon-description-section > label {
-    color: #00d4ff;
+    color: #6a6a6f;
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     display: block;
     margin-bottom: 8px;
-    text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+    text-shadow: 0 0 5px rgba(90, 120, 140, 0.5);
 }
 
 /* Tech Level Box */
@@ -572,11 +572,11 @@
     min-height: 70px;
     max-height: 70px;
     box-sizing: border-box;
-    background: rgba(5, 15, 25, 0.9);
-    border: 3px solid #00d4ff;
+    background: rgba(25, 25, 30, 0.9);
+    border: 3px solid #6a6a6f;
     border-radius: 6px;
     margin-right: 10px;
-    box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+    box-shadow: 0 0 12px rgba(90, 120, 140, 0.4);
     flex-shrink: 0;
     flex-grow: 0;
     padding: 6px;
@@ -584,7 +584,7 @@
 }
 
 .tech-level-label {
-    color: #00d4ff;
+    color: #6a6a6f;
     font-size: 8px;
     font-weight: 700;
     text-transform: uppercase;
@@ -597,19 +597,19 @@
 .tech-level-input {
     background: transparent;
     border: none;
-    color: #00d4ff;
+    color: #6a6a6f;
     font-size: 22px;
     font-weight: bold;
     text-align: center;
     width: 100%;
     padding: 0;
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+    text-shadow: 0 0 8px rgba(90, 120, 140, 0.5);
     line-height: 1;
 }
 
 .tech-level-input:focus {
     outline: none;
-    text-shadow: 0 0 12px rgba(0, 212, 255, 0.8);
+    text-shadow: 0 0 12px rgba(90, 120, 140, 0.8);
 }
 
 /* Adjust name input when tech level is present */
@@ -636,17 +636,17 @@
     min-width: 70px;
     min-height: 70px;
     flex-shrink: 0;
-    border: 2px solid #00d4ff;
+    border: 2px solid #6a6a6f;
     border-radius: 4px;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 10px rgba(90, 120, 140, 0.3);
     transition: all 0.2s ease;
     box-sizing: border-box;
 }
 
 .charname.flexrow .profile-img:hover {
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
-    border-color: #00fff7;
+    box-shadow: 0 0 15px rgba(90, 120, 140, 0.6);
+    border-color: #c0c0c0;
 }
 
 /* Item sheet header adjustments for weapons */
@@ -655,9 +655,9 @@
     min-height: auto;
     max-height: none !important;
     overflow: visible !important;
-    background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
-    border-bottom: 2px solid #00d4ff;
-    box-shadow: 0 2px 10px rgba(0, 212, 255, 0.2);
+    background: linear-gradient(135deg, #3a3a3e 0%, #2a2a2e 100%);
+    border-bottom: 2px solid #6a6a6f;
+    box-shadow: 0 2px 10px rgba(90, 120, 140, 0.2);
     padding: 15px 15px 8px 15px;
     display: flex;
     flex-direction: column;
@@ -675,16 +675,16 @@
 }
 
 .sgrpg.itemsheet .sheet-header .profile-img {
-    border: 2px solid #00d4ff;
+    border: 2px solid #6a6a6f;
     border-radius: 4px;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 10px rgba(90, 120, 140, 0.3);
     transition: all 0.2s ease;
 }
 
 .sgrpg.itemsheet .sheet-header .profile-img:hover {
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
-    border-color: #00fff7;
+    box-shadow: 0 0 15px rgba(90, 120, 140, 0.6);
+    border-color: #c0c0c0;
 }
 
 .sgrpg.itemsheet .sheet-header .header-fields {
@@ -721,12 +721,12 @@
 }
 
 .sgrpg.itemsheet.flexcol .sheet-header .charname input[name="name"] {
-    background: rgba(5, 15, 25, 0.8);
-    border: 1px solid #1a4d6d;
-    color: #00d4ff;
+    background: rgba(25, 25, 30, 0.8);
+    border: 1px solid #4a4a4f;
+    color: #6a6a6f;
     font-size: 18px;
     font-weight: bold;
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
+    text-shadow: 0 0 8px rgba(90, 120, 140, 0.3);
     padding: 0 15px;
     border-radius: 3px;
     transition: all 0.2s ease;
@@ -737,9 +737,9 @@
 }
 
 .sgrpg.itemsheet.flexcol .sheet-header .charname input[name="name"]:focus {
-    border-color: #00d4ff;
-    background: rgba(5, 15, 25, 1);
-    box-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
+    border-color: #6a6a6f;
+    background: rgba(25, 25, 30, 1);
+    box-shadow: 0 0 5px rgba(90, 120, 140, 0.3);
     outline: none;
 }
 
@@ -791,7 +791,7 @@ section.window-content.sgrpg {
 
 .sgrpg.itemsheet form.sgrpg {
     border: none !important;
-    background: linear-gradient(135deg, #0a1929 0%, #1a1a2e 100%) !important;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2e 100%) !important;
     box-shadow: none !important;
 }
 
@@ -805,6 +805,26 @@ section.window-content.sgrpg {
     background: rgba(0, 0, 0, 0.9) !important;
 }
 
+/* Force actor sheet window to expand to content */
+.window-app.sgrpg.sheet.actor {
+    min-width: 900px !important;
+}
+
+/* Remove ALL padding from window elements */
+.window-app.sgrpg.sheet.actor,
+.window-app.sheet.actor,
+body .app.window-app.sheet.actor {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.window-app.sgrpg.sheet.actor .window-content {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 /* Remove light colored borders completely */
 .sgrpg.itemsheet *,
 .sgrpg.itemsheet *::before,
@@ -814,24 +834,24 @@ section.window-content.sgrpg {
 
 /* Re-add only the borders we want (cyan) */
 .sgrpg.itemsheet .sheet-header {
-    border-bottom: 2px solid #00d4ff !important;
+    border-bottom: 2px solid #6a6a6f !important;
 }
 
 .sgrpg.itemsheet .tech-level-box,
 .sgrpg.itemsheet .profile-img,
 .sgrpg.itemsheet .weapon-section,
 .sgrpg.itemsheet .weapon-description-section {
-    border-color: #00d4ff !important;
+    border-color: #6a6a6f !important;
 }
 
 .sgrpg.itemsheet .weapon-section {
-    border-color: #0a2540 !important;
+    border-color: #2a2a2e !important;
 }
 
 .sgrpg.itemsheet input,
 .sgrpg.itemsheet select,
 .sgrpg.itemsheet textarea {
-    border-color: #1a4d6d !important;
+    border-color: #4a4a4f !important;
 }
 
 /* Override any Foundry default borders */
@@ -846,9 +866,35 @@ section.window-content {
     background: transparent !important;
 }
 
+/* Ensure actor sheet window content fills properly */
+.window-app.sgrpg.sheet.actor section.window-content,
+.sgrpg.sheet.actor .window-content,
+.window-app.sheet.actor.sgrpg .window-content,
+section.window-content.sgrpg {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Override Foundry VTT's default window-content padding - AGGRESSIVE */
+.app.window-app.sheet.actor.sgrpg .window-content,
+.window-app.sgrpg .window-content,
+.sgrpg .window-content,
+.window-app .window-content.sgrpg,
+body .window-app.sheet.actor .window-content {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Nuclear option - override all Foundry padding for actor sheets */
+.app.sheet.actor .window-content {
+    padding: 0 !important;
+}
+
 /* Dark theme for editor/description areas */
 .sgrpg.itemsheet .sheet-body {
-    background: linear-gradient(135deg, #0a1929 0%, #1a1a2e 100%) !important;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2e 100%) !important;
 }
 
 .sgrpg.itemsheet .tox,
@@ -860,7 +906,7 @@ section.window-content {
 
 .sgrpg.itemsheet .tox .tox-edit-area__iframe,
 .sgrpg.itemsheet iframe {
-    background: rgba(5, 15, 25, 0.9) !important;
+    background: rgba(25, 25, 30, 0.9) !important;
 }
 
 /* ======================================== */
@@ -870,9 +916,9 @@ section.window-content {
 .sgrpg.itemsheet .sheet-tabs {
     flex: 0 0 40px;
     border-top: none;
-    border-bottom: 2px solid #00d4ff;
-    background: linear-gradient(135deg, #0a1929 0%, #0f3460 100%);
-    box-shadow: 0 2px 8px rgba(0, 212, 255, 0.2);
+    border-bottom: 2px solid #6a6a6f;
+    background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3e 100%);
+    box-shadow: 0 2px 8px rgba(90, 120, 140, 0.2);
     margin: 0;
     padding: 0;
     display: flex;
@@ -890,12 +936,12 @@ section.window-content {
     letter-spacing: 1px;
     color: #5a9cc7;
     border: none;
-    border-right: 1px solid #0a2540;
+    border-right: 1px solid #2a2a2e;
     background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
-    text-shadow: 0 0 3px rgba(0, 212, 255, 0.3);
+    text-shadow: 0 0 3px rgba(90, 120, 140, 0.3);
 }
 
 .sgrpg.itemsheet .sheet-tabs .item:last-child {
@@ -903,17 +949,17 @@ section.window-content {
 }
 
 .sgrpg.itemsheet .sheet-tabs .item:hover {
-    color: #00d4ff;
-    background: rgba(0, 212, 255, 0.1);
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+    color: #6a6a6f;
+    background: rgba(90, 120, 140, 0.1);
+    text-shadow: 0 0 8px rgba(90, 120, 140, 0.6);
 }
 
 .sgrpg.itemsheet .sheet-tabs .item.active {
-    color: #00fff7;
-    background: linear-gradient(180deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 100%);
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
-    border-bottom: 3px solid #00d4ff;
-    box-shadow: inset 0 -3px 10px rgba(0, 212, 255, 0.3);
+    color: #c0c0c0;
+    background: linear-gradient(180deg, rgba(90, 120, 140, 0.2) 0%, rgba(90, 120, 140, 0.05) 100%);
+    text-shadow: 0 0 10px rgba(90, 120, 140, 0.8);
+    border-bottom: 3px solid #6a6a6f;
+    box-shadow: inset 0 -3px 10px rgba(90, 120, 140, 0.3);
 }
 
 .sgrpg.itemsheet .sheet-tabs .item.active::after {
@@ -923,8 +969,8 @@ section.window-content {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-    box-shadow: 0 0 8px #00d4ff;
+    background: linear-gradient(90deg, transparent, #6a6a6f, transparent);
+    box-shadow: 0 0 8px #6a6a6f;
 }
 
 /* ======================================== */
@@ -945,17 +991,17 @@ section.window-content {
 }
 
 .lore-label {
-    color: #00d4ff;
+    color: #6a6a6f;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+    text-shadow: 0 0 5px rgba(90, 120, 140, 0.5);
 }
 
 .lore-section input[type="text"] {
-    background: rgba(5, 15, 25, 0.8);
-    border: 1px solid #1a4d6d;
+    background: rgba(25, 25, 30, 0.8);
+    border: 1px solid #4a4a4f;
     color: #e0e0e0;
     padding: 8px 12px;
     border-radius: 3px;
@@ -964,9 +1010,9 @@ section.window-content {
 }
 
 .lore-section input[type="text"]:focus {
-    border-color: #00d4ff;
-    background: rgba(5, 15, 25, 1);
-    box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
+    border-color: #6a6a6f;
+    background: rgba(25, 25, 30, 1);
+    box-shadow: 0 0 8px rgba(90, 120, 140, 0.3);
     outline: none;
 }
 
@@ -1006,7 +1052,7 @@ section.window-content {
 .sgrpg.itemsheet .editor-content,
 .sgrpg.itemsheet .tox-edit-area,
 .sgrpg.itemsheet .ProseMirror {
-    color: #d0e7f5 !important;
+    color: #e0e0e0 !important;
     background: transparent !important;
 }
 
@@ -1015,13 +1061,13 @@ section.window-content {
 .lore-description .mce-content-body,
 .lore-description .tox-edit-area__iframe,
 .lore-description iframe {
-    background: rgba(5, 15, 25, 0.9) !important;
+    background: rgba(25, 25, 30, 0.9) !important;
 }
 
 /* Target the body inside the iframe */
 .sgrpg.itemsheet .mce-content-body {
     color: #e0e0e0 !important;
-    background-color: rgba(5, 15, 25, 0.9) !important;
+    background-color: rgba(25, 25, 30, 0.9) !important;
 }
 
 .sgrpg.itemsheet .mce-content-body * {
@@ -1062,10 +1108,10 @@ section.window-content {
 .equip-section {
     margin-bottom: 8px;
     margin-top: 0;
-    border: 1px solid #0a2540;
+    border: 1px solid #2a2a2e;
     border-radius: 4px;
     overflow: hidden;
-    background: rgba(10, 37, 64, 0.4);
+    background: rgba(35, 35, 40, 0.4);
 }
 
 .equip-section:first-child {
@@ -1089,7 +1135,7 @@ section.window-content {
 }
 
 .equip-stat label {
-    color: #5eb3d6;
+    color: #a8a8a8;
     font-size: 9px;
     font-weight: 600;
     text-transform: uppercase;
@@ -1099,10 +1145,10 @@ section.window-content {
 .equip-stat input[type="text"],
 .equip-stat input[type="number"],
 .equip-stat select {
-    background: rgba(5, 15, 25, 0.8);
-    border: 1px solid #1a4d6d;
+    background: rgba(25, 25, 30, 0.8);
+    border: 1px solid #4a4a4f;
     border-radius: 3px;
-    color: #d0e7f5;
+    color: #e0e0e0;
     padding: 5px 8px;
     font-size: 12px;
     transition: all 0.2s ease;
@@ -1111,9 +1157,9 @@ section.window-content {
 .equip-stat input[type="text"]:focus,
 .equip-stat input[type="number"]:focus,
 .equip-stat select:focus {
-    border-color: #00d4ff;
-    background: rgba(5, 15, 25, 1);
-    box-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
+    border-color: #6a6a6f;
+    background: rgba(25, 25, 30, 1);
+    box-shadow: 0 0 5px rgba(90, 120, 140, 0.3);
     outline: none;
 }
 
@@ -1146,19 +1192,19 @@ section.window-content {
 
 /* Weapon table header - Dark sci-fi theme */
 .charsheet .weapon-table thead tr.weapon-table-header {
-    background: linear-gradient(135deg, #0a1929 0%, #0f3460 100%);
-    border-bottom: 2px solid #00d4ff;
+    background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3e 100%);
+    border-bottom: 2px solid #6a6a6f;
 }
 
 .charsheet .weapon-table thead tr.weapon-table-header th {
-    color: #00d4ff;
+    color: #6a6a6f;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 10px 8px;
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
-    border-right: 1px solid rgba(0, 212, 255, 0.2);
+    text-shadow: 0 0 8px rgba(90, 120, 140, 0.6);
+    border-right: 1px solid rgba(90, 120, 140, 0.2);
 }
 
 .charsheet .weapon-table thead tr.weapon-table-header th:last-child {
@@ -1175,14 +1221,14 @@ section.window-content {
 .charsheet .add-weapon-btn-header {
     width: 35px;
     height: 35px;
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.1) 100%);
-    border: 2px solid #00d4ff;
+    background: linear-gradient(135deg, rgba(90, 120, 140, 0.2) 0%, rgba(90, 120, 140, 0.1) 100%);
+    border: 2px solid #6a6a6f;
     border-radius: 6px;
-    color: #00d4ff;
+    color: #6a6a6f;
     font-size: 16px;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 10px rgba(90, 120, 140, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1190,8 +1236,8 @@ section.window-content {
 }
 
 .charsheet .add-weapon-btn-header:hover {
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.4) 0%, rgba(0, 212, 255, 0.2) 100%);
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+    background: linear-gradient(135deg, rgba(90, 120, 140, 0.4) 0%, rgba(90, 120, 140, 0.2) 100%);
+    box-shadow: 0 0 15px rgba(90, 120, 140, 0.6);
     transform: scale(1.05);
 }
 
@@ -1252,19 +1298,19 @@ section.window-content {
 
 /* Equipment table header - matching weapon style */
 .charsheet .equip-table thead tr.equip-table-header {
-    background: linear-gradient(135deg, #0a1929 0%, #0f3460 100%);
-    border-bottom: 2px solid #00d4ff;
+    background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3e 100%);
+    border-bottom: 2px solid #6a6a6f;
 }
 
 .charsheet .equip-table thead tr.equip-table-header th {
-    color: #00d4ff;
+    color: #6a6a6f;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 10px 8px;
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
-    border-right: 1px solid rgba(0, 212, 255, 0.2);
+    text-shadow: 0 0 8px rgba(90, 120, 140, 0.6);
+    border-right: 1px solid rgba(90, 120, 140, 0.2);
 }
 
 .charsheet .equip-table thead tr.equip-table-header th:last-child {
@@ -1291,28 +1337,28 @@ section.window-content {
 /* ========================================= */
 
 .weapon-selector.app {
-    background: linear-gradient(135deg, #0a1929 0%, #0f3460 100%);
-    border: 2px solid #00d4ff;
+    background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3e 100%);
+    border: 2px solid #6a6a6f;
     border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+    box-shadow: 0 0 30px rgba(90, 120, 140, 0.5);
 }
 
 .weapon-selector .window-header {
-    background: linear-gradient(90deg, #0a2540 0%, #0f3460 100%);
-    border-bottom: 2px solid #00d4ff;
-    color: #00d4ff;
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+    background: linear-gradient(90deg, #2a2a2e 0%, #3a3a3e 100%);
+    border-bottom: 2px solid #6a6a6f;
+    color: #6a6a6f;
+    text-shadow: 0 0 10px rgba(90, 120, 140, 0.8);
 }
 
 .weapon-selector .window-title {
-    color: #00d4ff;
+    color: #6a6a6f;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 .weapon-selector .window-content {
-    background: rgba(10, 25, 41, 0.95);
+    background: rgba(30, 30, 35, 0.95);
 }
 
 .weapon-selector-content {
@@ -1330,23 +1376,23 @@ section.window-content {
 .weapon-selector #weapon-search {
     flex: 1;
     padding: 10px 15px;
-    background: rgba(5, 15, 25, 0.9);
-    border: 2px solid #1a4d6d;
+    background: rgba(25, 25, 30, 0.9);
+    border: 2px solid #4a4a4f;
     border-radius: 6px;
-    color: #d0e7f5;
+    color: #e0e0e0;
     font-size: 14px;
     transition: all 0.3s ease;
 }
 
 .weapon-selector #weapon-search:focus {
-    border-color: #00d4ff;
-    background: rgba(5, 15, 25, 1);
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+    border-color: #6a6a6f;
+    background: rgba(25, 25, 30, 1);
+    box-shadow: 0 0 10px rgba(90, 120, 140, 0.4);
     outline: none;
 }
 
 .weapon-selector #weapon-search::placeholder {
-    color: rgba(208, 231, 245, 0.5);
+    color: rgba(200, 200, 205, 0.5);
 }
 
 .weapon-selector .weapons-grid {
@@ -1364,23 +1410,23 @@ section.window-content {
 }
 
 .weapon-selector .weapons-grid::-webkit-scrollbar-track {
-    background: rgba(5, 15, 25, 0.5);
+    background: rgba(25, 25, 30, 0.5);
     border-radius: 5px;
 }
 
 .weapon-selector .weapons-grid::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #00d4ff 0%, #0a7fa0 100%);
+    background: linear-gradient(180deg, #6a6a6f 0%, #5a7a8f 100%);
     border-radius: 5px;
-    border: 2px solid rgba(5, 15, 25, 0.5);
+    border: 2px solid rgba(25, 25, 30, 0.5);
 }
 
 .weapon-selector .weapons-grid::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #00fff7 0%, #00d4ff 100%);
+    background: linear-gradient(180deg, #c0c0c0 0%, #6a6a6f 100%);
 }
 
 .weapon-selector .weapon-card {
-    background: linear-gradient(135deg, rgba(10, 37, 64, 0.8) 0%, rgba(5, 15, 25, 0.9) 100%);
-    border: 2px solid #1a4d6d;
+    background: linear-gradient(135deg, rgba(35, 35, 40, 0.8) 0%, rgba(25, 25, 30, 0.9) 100%);
+    border: 2px solid #4a4a4f;
     border-radius: 8px;
     padding: 12px;
     cursor: pointer;
@@ -1399,17 +1445,17 @@ section.window-content {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, transparent 0%, rgba(0, 212, 255, 0.05) 100%);
+    background: linear-gradient(135deg, transparent 0%, rgba(90, 120, 140, 0.05) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
 }
 
 .weapon-selector .weapon-card:hover {
-    border-color: #00d4ff;
-    background: linear-gradient(135deg, rgba(10, 37, 64, 0.95) 0%, rgba(5, 15, 25, 1) 100%);
+    border-color: #6a6a6f;
+    background: linear-gradient(135deg, rgba(35, 35, 40, 0.95) 0%, rgba(25, 25, 30, 1) 100%);
     transform: translateY(-3px);
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    box-shadow: 0 0 20px rgba(90, 120, 140, 0.5);
 }
 
 .weapon-selector .weapon-card:hover::before {
@@ -1419,10 +1465,10 @@ section.window-content {
 .weapon-selector .weapon-image {
     width: 100%;
     height: 120px;
-    border: 2px solid #1a4d6d;
+    border: 2px solid #4a4a4f;
     border-radius: 6px;
     overflow: hidden;
-    background: rgba(5, 15, 25, 0.9);
+    background: rgba(25, 25, 30, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1430,14 +1476,14 @@ section.window-content {
 }
 
 .weapon-selector .weapon-card:hover .weapon-image {
-    border-color: #00d4ff;
+    border-color: #6a6a6f;
 }
 
 .weapon-selector .weapon-image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.3));
+    filter: drop-shadow(0 0 5px rgba(90, 120, 140, 0.3));
 }
 
 .weapon-selector .weapon-info {
@@ -1449,11 +1495,11 @@ section.window-content {
 .weapon-selector .weapon-name {
     font-weight: 700;
     font-size: 15px;
-    color: #00d4ff;
+    color: #6a6a6f;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+    text-shadow: 0 0 8px rgba(90, 120, 140, 0.6);
 }
 
 .weapon-selector .weapon-stats {
@@ -1466,7 +1512,7 @@ section.window-content {
 .weapon-selector .weapon-stat {
     display: flex;
     gap: 5px;
-    background: rgba(5, 15, 25, 0.6);
+    background: rgba(25, 25, 30, 0.6);
     padding: 4px 8px;
     border-radius: 4px;
     border: 1px solid rgba(26, 77, 109, 0.5);
@@ -1474,19 +1520,19 @@ section.window-content {
 
 .weapon-selector .weapon-stat .stat-label {
     font-weight: 600;
-    color: #5eb3d6;
+    color: #a8a8a8;
     min-width: 40px;
 }
 
 .weapon-selector .weapon-stat .stat-value {
-    color: #d0e7f5;
+    color: #e0e0e0;
     font-weight: 500;
 }
 
 .weapon-selector .no-weapons {
     text-align: center;
     padding: 60px 20px;
-    color: rgba(208, 231, 245, 0.6);
+    color: rgba(200, 200, 205, 0.6);
     font-size: 14px;
 }
 
@@ -1495,8 +1541,8 @@ section.window-content {
     display: block;
     font-size: 48px;
     margin-bottom: 15px;
-    color: #00d4ff;
-    text-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+    color: #6a6a6f;
+    text-shadow: 0 0 15px rgba(90, 120, 140, 0.8);
 }
 
 /* ========================================= */
@@ -1504,28 +1550,28 @@ section.window-content {
 /* ========================================= */
 
 .inventory-selector.app {
-    background: linear-gradient(135deg, #0a1929 0%, #0f3460 100%);
-    border: 2px solid #00d4ff;
+    background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3e 100%);
+    border: 2px solid #6a6a6f;
     border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+    box-shadow: 0 0 30px rgba(90, 120, 140, 0.5);
 }
 
 .inventory-selector .window-header {
-    background: linear-gradient(90deg, #0a2540 0%, #0f3460 100%);
-    border-bottom: 2px solid #00d4ff;
-    color: #00d4ff;
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+    background: linear-gradient(90deg, #2a2a2e 0%, #3a3a3e 100%);
+    border-bottom: 2px solid #6a6a6f;
+    color: #6a6a6f;
+    text-shadow: 0 0 10px rgba(90, 120, 140, 0.8);
 }
 
 .inventory-selector .window-title {
-    color: #00d4ff;
+    color: #6a6a6f;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 .inventory-selector .window-content {
-    background: rgba(10, 25, 41, 0.95);
+    background: rgba(30, 30, 35, 0.95);
     padding: 0;
 }
 
@@ -1541,7 +1587,7 @@ section.window-content {
     display: flex;
     gap: 0;
     margin-bottom: 0;
-    background: rgba(10, 37, 64, 0.3);
+    background: rgba(35, 35, 40, 0.3);
     border-radius: 8px 8px 0 0;
     overflow: hidden;
 }
@@ -1549,10 +1595,10 @@ section.window-content {
 .inventory-tab {
     flex: 1;
     padding: 14px 20px;
-    background: rgba(10, 37, 64, 0.5);
+    background: rgba(40, 40, 45, 0.8);
     border: none;
     border-bottom: 3px solid transparent;
-    color: #5eb3d6;
+    color: #a8a8a8;
     font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
@@ -1567,16 +1613,16 @@ section.window-content {
 }
 
 .inventory-tab:not(.active):hover {
-    background: rgba(10, 37, 64, 0.7);
-    color: #00d4ff;
-    border-bottom-color: rgba(0, 212, 255, 0.4);
+    background: rgba(35, 35, 40, 0.7);
+    color: #6a6a6f;
+    border-bottom-color: rgba(90, 120, 140, 0.4);
 }
 
 .inventory-tab.active {
-    background: rgba(0, 212, 255, 0.15);
-    border-bottom-color: #00d4ff;
-    color: #00fff7;
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+    background: rgba(90, 120, 140, 0.15);
+    border-bottom-color: #6a6a6f;
+    color: #c0c0c0;
+    text-shadow: 0 0 8px rgba(90, 120, 140, 0.6);
 }
 
 .inventory-tab i {
@@ -1595,41 +1641,42 @@ section.window-content {
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    color: rgba(208, 231, 245, 0.5);
+    color: rgba(160, 160, 165, 0.5);
     pointer-events: none;
 }
 
 .inventory-selector #inventory-search {
     flex: 1;
     padding: 10px 40px 10px 15px;
-    background: rgba(5, 15, 25, 0.9);
-    border: 2px solid #1a4d6d;
+    background: rgba(30, 30, 35, 0.9);
+    border: 2px solid #4a4a4f;
     border-radius: 6px;
-    color: #d0e7f5;
+    color: #ffffff;
     font-size: 14px;
+    font-weight: 500;
     transition: all 0.3s ease;
 }
 
 .inventory-selector #inventory-search:focus {
-    border-color: #00d4ff;
-    background: rgba(5, 15, 25, 1);
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+    border-color: #6a6a6f;
+    background: rgba(25, 25, 30, 1);
+    box-shadow: 0 0 10px rgba(90, 120, 140, 0.4);
     outline: none;
 }
 
 .inventory-selector #inventory-search:focus + .search-icon {
-    color: #00d4ff;
+    color: #6a6a6f;
 }
 
 .inventory-selector #inventory-search::placeholder {
-    color: rgba(208, 231, 245, 0.5);
+    color: rgba(200, 200, 205, 0.5);
 }
 
 /* Tab Content */
 .inventory-selector .tab-content {
     display: none;
-    background: rgba(10, 25, 41, 0.5);
-    border: 2px solid #00d4ff;
+    background: rgba(30, 30, 35, 0.5);
+    border: 2px solid #6a6a6f;
     border-top: none;
     border-radius: 0 0 8px 8px;
     padding: 10px;
@@ -1656,24 +1703,24 @@ section.window-content {
 }
 
 .inventory-selector .items-grid::-webkit-scrollbar-track {
-    background: rgba(5, 15, 25, 0.5);
+    background: rgba(25, 25, 30, 0.5);
     border-radius: 5px;
 }
 
 .inventory-selector .items-grid::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #00d4ff 0%, #0a7fa0 100%);
+    background: linear-gradient(180deg, #6a6a6f 0%, #5a7a8f 100%);
     border-radius: 5px;
-    border: 2px solid rgba(5, 15, 25, 0.5);
+    border: 2px solid rgba(25, 25, 30, 0.5);
 }
 
 .inventory-selector .items-grid::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #00fff7 0%, #00d4ff 100%);
+    background: linear-gradient(180deg, #c0c0c0 0%, #6a6a6f 100%);
 }
 
 /* Item Cards */
 .inventory-selector .item-card {
-    background: linear-gradient(135deg, rgba(10, 37, 64, 0.8) 0%, rgba(5, 15, 25, 0.9) 100%);
-    border: 2px solid #1a4d6d;
+    background: linear-gradient(135deg, rgba(40, 40, 45, 0.85) 0%, rgba(30, 30, 35, 0.9) 100%);
+    border: 2px solid #4a4a4f;
     border-radius: 8px;
     padding: 12px;
     cursor: pointer;
@@ -1692,17 +1739,17 @@ section.window-content {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, transparent 0%, rgba(0, 212, 255, 0.05) 100%);
+    background: linear-gradient(135deg, transparent 0%, rgba(90, 120, 140, 0.05) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
 }
 
 .inventory-selector .item-card:hover {
-    border-color: #00d4ff;
-    background: linear-gradient(135deg, rgba(10, 37, 64, 0.95) 0%, rgba(5, 15, 25, 1) 100%);
+    border-color: #6a6a6f;
+    background: linear-gradient(135deg, rgba(35, 35, 40, 0.95) 0%, rgba(25, 25, 30, 1) 100%);
     transform: translateY(-3px);
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    box-shadow: 0 0 20px rgba(90, 120, 140, 0.5);
 }
 
 .inventory-selector .item-card:hover::before {
@@ -1712,10 +1759,10 @@ section.window-content {
 .inventory-selector .item-image {
     width: 100%;
     height: 120px;
-    border: 2px solid #1a4d6d;
+    border: 2px solid #4a4a4f;
     border-radius: 6px;
     overflow: hidden;
-    background: rgba(5, 15, 25, 0.9);
+    background: rgba(25, 25, 30, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1723,14 +1770,14 @@ section.window-content {
 }
 
 .inventory-selector .item-card:hover .item-image {
-    border-color: #00d4ff;
+    border-color: #6a6a6f;
 }
 
 .inventory-selector .item-image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.3));
+    filter: drop-shadow(0 0 5px rgba(90, 120, 140, 0.3));
 }
 
 .inventory-selector .item-info {
@@ -1742,11 +1789,11 @@ section.window-content {
 .inventory-selector .item-name {
     font-weight: 700;
     font-size: 15px;
-    color: #00d4ff;
+    color: #6a6a6f;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+    text-shadow: 0 0 8px rgba(90, 120, 140, 0.6);
 }
 
 .inventory-selector .item-stats {
@@ -1759,7 +1806,7 @@ section.window-content {
 .inventory-selector .item-stat {
     display: flex;
     gap: 5px;
-    background: rgba(5, 15, 25, 0.6);
+    background: rgba(30, 30, 35, 0.7);
     padding: 4px 8px;
     border-radius: 4px;
     border: 1px solid rgba(26, 77, 109, 0.5);
@@ -1767,20 +1814,21 @@ section.window-content {
 
 .inventory-selector .item-stat .stat-label {
     font-weight: 600;
-    color: #5eb3d6;
+    color: #a8a8a8;
     min-width: 40px;
 }
 
 .inventory-selector .item-stat .stat-value {
-    color: #d0e7f5;
+    color: #ffffff;
     font-weight: 500;
 }
 
 .inventory-selector .no-items {
     text-align: center;
     padding: 60px 20px;
-    color: rgba(208, 231, 245, 0.6);
+    color: #a8a8a8;
     font-size: 14px;
+    font-weight: 500;
 }
 
 .inventory-selector .no-items::before {
@@ -1788,8 +1836,8 @@ section.window-content {
     display: block;
     font-size: 48px;
     margin-bottom: 15px;
-    color: #00d4ff;
-    text-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+    color: #6a6a6f;
+    text-shadow: 0 0 15px rgba(90, 120, 140, 0.8);
 }
 
 /* Add Equipment Button */
@@ -1800,25 +1848,25 @@ section.window-content {
 
 .add-equipment-btn {
     padding: 8px 16px;
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.1) 100%);
-    border: 2px solid #00d4ff;
+    background: linear-gradient(135deg, rgba(90, 120, 140, 0.2) 0%, rgba(90, 120, 140, 0.1) 100%);
+    border: 2px solid #6a6a6f;
     border-radius: 6px;
-    color: #00d4ff;
+    color: #6a6a6f;
     font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 10px rgba(90, 120, 140, 0.3);
     display: inline-flex;
     align-items: center;
     gap: 8px;
 }
 
 .add-equipment-btn:hover {
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.4) 0%, rgba(0, 212, 255, 0.2) 100%);
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+    background: linear-gradient(135deg, rgba(90, 120, 140, 0.4) 0%, rgba(90, 120, 140, 0.2) 100%);
+    box-shadow: 0 0 15px rgba(90, 120, 140, 0.6);
     transform: scale(1.05);
 }
 
@@ -2053,7 +2101,7 @@ section.window-content {
 }
 
 .charsheet section.inventory h4 {
-    margin: 5px 0 10px 0;
+    margin: 5px -5px 10px -5px;
     padding: 0 5px;
 }
 
@@ -2076,10 +2124,13 @@ section.window-content {
 /* Rounded corners for all stat boxes */
 .charsheet section.skills,
 .charsheet section.saves,
-.charsheet .stat-box,
-.charsheet .deathsave-box,
-.charsheet .stats-container > div {
+.charsheet .deathsave-box {
     border-radius: 8px !important;
+}
+
+/* Stats container stat boxes - NO border radius for tight fit */
+.charsheet .stats-container > div {
+    border-radius: 0px !important;
 }
 
 .charsheet .deathsave-box .section.death {
@@ -2111,8 +2162,8 @@ section.window-content {
 /* Fix stat-box containers */
 .charsheet .stats-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0px;
 }
 
 .charsheet .stats-container .stat-box {
@@ -2120,7 +2171,11 @@ section.window-content {
     background: white;
     opacity: 0.9;
     padding: 5px;
-    border-radius: 8px;
+    border-radius: 0px;
+    margin-right: -2px;
+    margin-bottom: -2px;
+    margin-top: 0;
+    margin-left: 0;
 }
 
 /* ========================================= */
@@ -2175,7 +2230,7 @@ section.window-content {
 }
 
 .charsheet .stats-container .stat-box {
-    border-radius: 8px !important;
+    border-radius: 0px !important;
 }
 
 .charsheet .saves-inventory-container .saves {
@@ -2287,13 +2342,14 @@ section.window-content {
     display: flex !important;
     flex-direction: column !important;
     gap: 5px !important;
-    flex: 0 0 35% !important; /* Reduced from ~40% to 35% */
+    flex: 0 0 35% !important;
     min-width: 0 !important;
 }
 
 .charsheet .saves-inventory-container .inventory {
-    flex: 1 !important; /* Takes remaining ~65% */
+    flex: 0 1 55% !important;
     min-width: 0 !important;
+    max-width: 55% !important;
 }
 
 /* Fix inventory table to fit properly */
@@ -2345,8 +2401,8 @@ section.window-content {
 
 .charsheet .death-save-checks {
     border-radius: 6px;
-    padding: 5px;
-    background: rgba(255, 255, 255, 0.3);
+    padding: 0px;
+    background: transparent;
 }
 
 .charsheet .death-save-checks .rowflex {
@@ -2357,11 +2413,15 @@ section.window-content {
 
 /* Individual stat boxes (Initiative, Moxie, etc.) */
 .charsheet .stats-container .stat-box {
-    border-radius: 6px !important;
+    border-radius: 0px !important;
     border: 2px solid black !important;
     background: white !important;
     opacity: 0.9 !important;
     padding: 5px !important;
+    margin-right: -2px !important;
+    margin-bottom: -2px !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
 }
 
 /* Roll buttons inside stat boxes */
@@ -2435,7 +2495,7 @@ section.window-content {
 
 .charsheet .death-save-checks .rowflex {
     border-radius: 0 !important;
-    padding: 0 !important;
+    padding: 4px 0 !important;
     margin: 0 !important;
 }
 
@@ -2535,13 +2595,7 @@ section.window-content {
     border: none !important;
 }
 
-.charsheet .deathsave-box {
-    border: none !important;
-}
-
-.charsheet .deathsave-box .section.death {
-    border: none !important;
-}
+/* Deathsave-box border styling moved to Stargate theme section below */
 
 /* Remove borders from all character sheet sections */
 .charsheet section.saves,
@@ -2688,4 +2742,838 @@ section.window-content {
 .charsheet .weapon-table td:nth-child(9) {
     width: 110px !important;
     text-align: right !important;
+}
+
+/* ========================================= */
+/* STARGATE MILITARY METALLIC THEME         */
+/* Complete character sheet redesign        */
+/* Gray/gunmetal military aesthetic         */
+/* ========================================= */
+
+/* Main character sheet background */
+.charsheet.sheet.actor {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2e 100%) !important;
+    color: #e0e0e0 !important;
+}
+
+/* Override all section backgrounds - metallic gray */
+.charsheet .section:not(.attr .stat),
+.charsheet section:not(.attr .stat) {
+    background: rgba(40, 40, 45, 0.85) !important;
+    border: 2px solid #5a5a5f !important;
+    opacity: 1 !important;
+    box-shadow: 0 0 8px rgba(90, 90, 95, 0.3),
+                inset 0 0 15px rgba(80, 80, 85, 0.05) !important;
+}
+
+/* Headers - metallic gray style */
+.charsheet h3,
+.charsheet h4 {
+    color: #b8b8b8 !important;
+    text-transform: uppercase !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+    border-bottom: 2px solid #5a5a5f !important;
+    padding-bottom: 5px !important;
+    margin-bottom: 10px !important;
+}
+
+/* Labels - steel gray */
+.charsheet label {
+    color: #a8a8a8 !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    font-weight: 600 !important;
+}
+
+/* Text inputs - metallic display style */
+.charsheet input[type="text"],
+.charsheet input[type="number"] {
+    background: rgba(30, 30, 35, 0.9) !important;
+    border: 1px solid #4a4a4f !important;
+    border-bottom: 2px solid #6a6a6f !important;
+    color: #e0e0e0 !important;
+    border-radius: 0 !important;
+    transition: all 0.2s ease !important;
+}
+
+.charsheet input[type="text"]:focus,
+.charsheet input[type="number"]:focus {
+    background: rgba(25, 25, 30, 1) !important;
+    border-color: #6a6a6f !important;
+    box-shadow: 0 0 6px rgba(90, 120, 140, 0.4),
+                inset 0 0 10px rgba(70, 70, 75, 0.1) !important;
+    outline: none !important;
+}
+
+.charsheet input[type="text"]:placeholder-shown,
+.charsheet input[type="number"]:placeholder-shown {
+    background-color: rgba(35, 35, 40, 0.5) !important;
+}
+
+/* Textareas */
+.charsheet textarea {
+    background: rgba(30, 30, 35, 0.9) !important;
+    border: 2px solid #4a4a4f !important;
+    color: #e0e0e0 !important;
+    border-radius: 3px !important;
+}
+
+.charsheet textarea:focus {
+    border-color: #6a6a6f !important;
+    box-shadow: 0 0 6px rgba(90, 120, 140, 0.4) !important;
+    outline: none !important;
+}
+
+/* Buttons - military style */
+.charsheet a[type^="roll"].txt-btn,
+.charsheet button {
+    background: linear-gradient(135deg, rgba(50, 50, 55, 0.9) 0%, rgba(40, 40, 45, 0.95) 100%) !important;
+    border: 2px solid #5a5a5f !important;
+    color: #b8b8b8 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+}
+
+.charsheet a[type^="roll"].txt-btn:hover,
+.charsheet button:hover {
+    background: linear-gradient(135deg, rgba(90, 120, 140, 0.3) 0%, rgba(90, 120, 140, 0.1) 100%) !important;
+    border-color: #6a6a6f !important;
+    box-shadow: 0 0 15px rgba(90, 120, 140, 0.6),
+                inset 0 0 10px rgba(90, 120, 140, 0.2) !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 8px rgba(90, 120, 140, 0.8) !important;
+}
+
+/* Skill and save buttons - brighter text */
+.charsheet .skills a.txt-btn,
+.charsheet .saves a.txt-btn {
+    background: rgba(40, 40, 45, 0.8) !important;
+    border: 1px solid #4a4a4f !important;
+    color: #b8b8b8 !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+}
+
+.charsheet .skills a.txt-btn:hover,
+.charsheet .saves a.txt-btn:hover {
+    background: rgba(90, 120, 140, 0.25) !important;
+    border-color: #6a6a6f !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 6px rgba(90, 120, 140, 0.6) !important;
+}
+
+/* Checkboxes - cyber style */
+.charsheet input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: rgba(30, 30, 35, 0.9) !important;
+    border: 2px solid #4a4a4f !important;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease !important;
+}
+
+.charsheet input[type="checkbox"]:checked {
+    background: rgba(90, 120, 140, 0.3) !important;
+    border-color: #6a6a6f !important;
+    box-shadow: 0 0 10px rgba(90, 120, 140, 0.5),
+                inset 0 0 8px rgba(90, 120, 140, 0.3) !important;
+}
+
+.charsheet input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: #6a6a6f;
+    box-shadow: 0 0 8px #6a6a6f;
+}
+
+/* Select dropdowns */
+.charsheet select {
+    background: rgba(30, 30, 35, 0.9) !important;
+    border: 2px solid #4a4a4f !important;
+    color: #ffffff !important;
+    border-radius: 3px !important;
+    padding: 4px 8px !important;
+    font-weight: 500 !important;
+}
+
+.charsheet select:focus {
+    border-color: #6a6a6f !important;
+    box-shadow: 0 0 8px rgba(90, 120, 140, 0.4) !important;
+    outline: none !important;
+}
+
+/* Navigation tabs - Stargate style */
+.charsheet .tabs {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #4a4a4f !important;
+    padding: 8px 16px 0 16px !important;
+    display: flex !important;
+    gap: 24px !important;
+}
+
+.charsheet .tabs .item {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 6px 6px 0 0 !important;
+    color: #7a7a7a !important;
+    font-weight: 500 !important;
+    text-transform: capitalize !important;
+    font-size: 13px !important;
+    letter-spacing: 0.3px !important;
+    padding: 10px 16px !important;
+    transition: all 0.2s ease !important;
+    position: relative !important;
+}
+
+.charsheet .tabs .item:hover {
+    background: rgba(50, 50, 55, 0.3) !important;
+    color: #a8a8a8 !important;
+}
+
+.charsheet .tabs .item.active {
+    background: rgba(60, 60, 65, 0.6) !important;
+    color: #e0e0e0 !important;
+    font-weight: 600 !important;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Header section with character name */
+.charsheet .sheet-header {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+.charsheet .sheet-header input[type="text"] {
+    font-size: 20px !important;
+    font-weight: bold !important;
+    color: #6a6a6f !important;
+    text-shadow: 0 0 10px rgba(90, 120, 140, 0.6) !important;
+    border-bottom-color: #6a6a6f !important;
+}
+
+/* Ability scores - large displays (but NOT for .attr .stat which has chevron image) */
+.charsheet .stats-container input[type="text"].stat,
+.charsheet .stats-container input[type="number"].stat {
+    background: rgba(25, 25, 30, 0.9) !important;
+    border: 2px solid #6a6a6f !important;
+    color: #c8c8c8 !important;
+    text-shadow: 0 1px 2px rgba(80, 80, 85, 0.4) !important;
+    font-size: 1.75em !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    box-shadow: 0 0 10px rgba(80, 80, 85, 0.2),
+                inset 0 0 15px rgba(70, 70, 75, 0.1) !important;
+}
+
+/* HP and resource bars - steel gray */
+.charsheet input[type="range"].progress-bar::-moz-range-progress {
+    background: linear-gradient(90deg, #7a7a7f 0%, #5a5a5f 100%) !important;
+    box-shadow: 0 0 8px rgba(80, 80, 85, 0.4) !important;
+}
+
+.charsheet input[type="range"].progress-bar::-moz-range-track {
+    background: rgba(212, 0, 0, 0.5) !important;
+}
+
+/* Dice roll buttons - military display style */
+.charsheet .td-roll-btn,
+.charsheet .hd-roll-btn {
+    background: linear-gradient(135deg, rgba(35, 35, 40, 0.9) 0%, rgba(25, 25, 30, 1) 100%) !important;
+    border: 2px solid #6a6a6f !important;
+    color: #b8b8b8 !important;
+    font-size: 16px !important;
+    font-weight: normal !important;
+    text-shadow: 0 1px 3px rgba(80, 80, 85, 0.6) !important;
+    box-shadow: 0 0 6px rgba(80, 80, 85, 0.2),
+                inset 0 0 10px rgba(70, 70, 75, 0.05) !important;
+    padding: 8px 12px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.charsheet .td-roll-btn:hover,
+.charsheet .hd-roll-btn:hover {
+    background: rgba(70, 90, 105, 0.3) !important;
+    box-shadow: 0 0 12px rgba(90, 120, 140, 0.5),
+                inset 0 0 15px rgba(90, 120, 140, 0.15) !important;
+    transform: scale(1.03) !important;
+}
+
+/* Stats container (initiative, moxie, etc) */
+.charsheet .stats-container .stat-box {
+    background: rgba(40, 40, 45, 0.85) !important;
+    border: 2px solid #4a4a4f !important;
+    box-shadow: none !important;
+    margin-right: -2px !important;
+    margin-bottom: -2px !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+}
+
+.charsheet .stats-container a.txt-btn {
+    background: rgba(25, 25, 30, 0.8) !important;
+    border: 2px solid #4a4a4f !important;
+    color: #8aa8b8 !important;
+}
+
+.charsheet .stats-container a.txt-btn:hover {
+    border-color: #6a6a6f !important;
+    box-shadow: 0 0 8px rgba(90, 120, 140, 0.4) !important;
+    color: #a8b8c8 !important;
+}
+
+/* Death saves - matching gray theme */
+.charsheet .deathsave-box {
+    background: rgba(40, 40, 45, 0.85) !important;
+    border: 2px solid #5a5a5f !important;
+    box-shadow: 0 0 8px rgba(90, 90, 95, 0.3),
+                inset 0 0 15px rgba(80, 80, 85, 0.05) !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    margin: 0 !important;
+    min-height: auto !important;
+}
+
+.charsheet .deathsave-box .section.death {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Character info box - match death save style */
+.charsheet main.character > section.name {
+    background: rgba(40, 40, 45, 0.85) !important;
+    border: 2px solid #5a5a5f !important;
+    box-shadow: 0 0 8px rgba(90, 90, 95, 0.3),
+                inset 0 0 15px rgba(80, 80, 85, 0.05) !important;
+    border-radius: 8px !important;
+    padding: 10px !important;
+}
+
+.charsheet .death-save-checks {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    margin-top: 10px !important;
+}
+
+/* Table styling overrides for Stargate theme */
+.charsheet table {
+    background: rgba(35, 35, 40, 0.4) !important;
+}
+
+.charsheet table thead th {
+    background: rgba(35, 35, 40, 0.8) !important;
+    color: #6a6a6f !important;
+    border-color: #4a4a4f !important;
+}
+
+.charsheet table tbody tr {
+    border-bottom: 1px solid #4a4a4f !important;
+}
+
+.charsheet table tbody tr:hover {
+    background: rgba(90, 120, 140, 0.1) !important;
+}
+
+.charsheet table tbody td {
+    color: #ffffff !important;
+}
+
+/* Condition radio buttons - status indicators */
+.charsheet .condition input[type="radio"] {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: rgba(30, 30, 35, 0.9) !important;
+    border: 2px solid #4a4a4f !important;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
+
+.charsheet .condition input[type="radio"]:checked {
+    background: rgba(90, 120, 140, 0.3) !important;
+    border-color: #6a6a6f !important;
+    box-shadow: 0 0 10px rgba(90, 120, 140, 0.6) !important;
+}
+
+.charsheet .condition input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    background: #6a6a6f;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #6a6a6f;
+}
+
+/* Configuration tab styling */
+.charsheet .configuration section {
+    background: rgba(40, 40, 45, 0.85) !important;
+    border: 2px solid #4a4a4f !important;
+    margin-bottom: 15px !important;
+}
+
+.charsheet .configuration .config-button {
+    background: rgba(40, 40, 45, 0.9) !important;
+    border: 2px solid #6a6a6f !important;
+    color: #a8a8a8 !important;
+    font-weight: 600 !important;
+    padding: 10px 20px !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    transition: all 0.2s ease !important;
+}
+
+.charsheet .configuration .config-button:hover {
+    background: rgba(90, 120, 140, 0.2) !important;
+    box-shadow: 0 0 15px rgba(90, 120, 140, 0.6) !important;
+}
+
+/* Skill config grid */
+.charsheet .skill-config-grid {
+    display: grid !important;
+    gap: 5px !important;
+}
+
+.charsheet .skill-config-row {
+    background: rgba(40, 40, 45, 0.7) !important;
+    border: 1px solid #4a4a4f !important;
+    padding: 5px 8px !important;
+}
+
+/* Angular corner accents - military tech style */
+.charsheet .section:not(.attr .stat)::before,
+.charsheet section:not(.attr .stat)::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid #7a7a7f;
+    border-left: 2px solid #7a7a7f;
+    box-shadow: 0 0 4px rgba(90, 90, 95, 0.3);
+}
+
+.charsheet .section:not(.attr .stat)::after,
+.charsheet section:not(.attr .stat)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    border-bottom: 2px solid #7a7a7f;
+    border-right: 2px solid #7a7a7f;
+    box-shadow: 0 0 4px rgba(90, 90, 95, 0.3);
+}
+
+.charsheet .section,
+.charsheet section {
+    position: relative;
+}
+
+/* Very subtle scan line effect */
+.charsheet::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(80, 80, 85, 0.02) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(80, 80, 85, 0.02) 3px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.charsheet > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* ========================================= */
+/* PRESERVE CHEVRON BACKGROUND FOR ATTRIBUTES */
+/* ========================================= */
+
+/* Ensure attribute stat badges show the chevron background image */
+/* Match .attr container to gray theme */
+.charsheet main.character > .attr {
+    background: rgba(40, 40, 45, 0.85) !important;
+    opacity: 1 !important;
+    border: 2px solid #5a5a5f !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 8px rgba(90, 90, 95, 0.3),
+                inset 0 0 15px rgba(80, 80, 85, 0.05) !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: row !important;
+    grid-column: 1 / -1 !important;
+    justify-self: stretch !important;
+    align-self: stretch !important;
+    justify-content: space-between !important;
+}
+
+.charsheet .attr .stat {
+    background-color: transparent !important;
+    background-image: url(https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Stargate-RPG/images/attr.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: 124px 113px !important;
+    background-position: center !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.charsheet .attr input[type="number"],
+.charsheet .attr input[type="text"] {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    color: #1a1a1a !important;
+    font-weight: 900 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+}
+
+.charsheet .attr span.mod {
+    background: transparent !important;
+    color: #1a1a1a !important;
+    font-weight: 900 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+}
+
+.charsheet .attr a[type="roll"].txt-btn {
+    background: transparent !important;
+    border: 1px solid black !important;
+    color: black !important;
+    font-weight: 800 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/* ========================================= */
+/* WEAPON & INVENTORY TABLES - MILITARY THEME */
+/* ========================================= */
+
+/* Table headers - military gray */
+.charsheet .weapon-table thead tr.weapon-table-header,
+.charsheet .equip-table thead tr.equip-table-header {
+    background: linear-gradient(135deg, #4a4a4f 0%, #3a3a3e 100%) !important;
+    border-bottom: 2px solid #5a5a5f !important;
+}
+
+.charsheet .weapon-table thead tr.weapon-table-header th,
+.charsheet .equip-table thead tr.equip-table-header th {
+    color: #c0c0c0 !important;
+    background: transparent !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    padding: 10px 8px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+    border-right: 1px solid rgba(70, 70, 75, 0.3) !important;
+}
+
+.charsheet .weapon-table thead tr.weapon-table-header th:last-child,
+.charsheet .equip-table thead tr.equip-table-header th:last-child {
+    border-right: none !important;
+}
+
+/* Table body rows - dark gray with metallic sheen */
+.charsheet .weapon-table tbody tr,
+.charsheet .equip-table tbody tr {
+    background: rgba(30, 30, 35, 0.7) !important;
+    border-bottom: 1px solid #4a4a4f !important;
+    transition: background 0.2s ease;
+}
+
+.charsheet .weapon-table tbody tr:hover,
+.charsheet .equip-table tbody tr:hover {
+    background: rgba(50, 50, 55, 0.8) !important;
+}
+
+.charsheet .weapon-table tbody td,
+.charsheet .equip-table tbody td {
+    padding: 8px !important;
+    font-size: 12px !important;
+    color: #e0e0e0 !important;
+    border-right: 1px solid #4a4a4f !important;
+}
+
+.charsheet .weapon-table tbody td:last-child,
+.charsheet .equip-table tbody td:last-child {
+    border-right: none !important;
+}
+
+/* Table wrappers - metallic boxes */
+.charsheet .weapons-box,
+.charsheet section.inventory {
+    background: rgba(40, 40, 45, 0.85) !important;
+    border: 2px solid #5a5a5f !important;
+    border-radius: 8px !important;
+}
+
+/* Weapons section header */
+.charsheet .weapons h4 {
+    position: relative;
+    z-index: 10 !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+}
+
+/* Table borders */
+.charsheet .weapon-table,
+.charsheet .equip-table {
+    border: 2px solid #5a5a5f !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+/* Add weapon/equipment buttons - military style */
+.charsheet .add-weapon-btn-header,
+.charsheet .add-equipment-btn {
+    background: linear-gradient(135deg, rgba(50, 50, 55, 0.9) 0%, rgba(40, 40, 45, 0.95) 100%) !important;
+    border: 2px solid #5a5a5f !important;
+    color: #b8b8b8 !important;
+}
+
+.charsheet .add-weapon-btn-header:hover,
+.charsheet .add-equipment-btn:hover {
+    background: rgba(70, 70, 75, 0.9) !important;
+    border-color: #6a6a6f !important;
+    color: #d4d4d4 !important;
+}
+
+/* Weapon/equipment table item images */
+.charsheet .weapon-table .item-image,
+.charsheet .equip-table .item-image {
+    border: 1px solid #5a5a5f !important;
+    background: rgba(20, 20, 25, 0.8) !important;
+}
+
+/* Weapon/equipment actions (edit/delete buttons) */
+.charsheet .weapon-table .item-control,
+.charsheet .equip-table .item-control {
+    color: #b8b8b8 !important;
+    border: 1px solid #5a5a5f !important;
+    background: rgba(40, 40, 45, 0.6) !important;
+    transition: all 0.2s ease !important;
+}
+
+.charsheet .weapon-table .item-control:hover,
+.charsheet .equip-table .item-control:hover {
+    color: #d4d4d4 !important;
+    border-color: #6a6a6f !important;
+    background: rgba(60, 60, 65, 0.8) !important;
+}
+
+/* Weapon table clickable names */
+.charsheet .weapon-table .item-name,
+.charsheet .equip-table .item-name {
+    color: #a8b8c8 !important;
+    cursor: pointer;
+}
+
+.charsheet .weapon-table .item-name:hover,
+.charsheet .equip-table .item-name:hover {
+    color: #c0d0e0 !important;
+    text-shadow: 0 1px 3px rgba(90, 120, 140, 0.4) !important;
+}
+
+/* Inputs within weapon/equipment tables */
+.charsheet .weapon-table input[type="number"],
+.charsheet .weapon-table input[type="text"],
+.charsheet .equip-table input[type="number"],
+.charsheet .equip-table input[type="text"] {
+    background: rgba(25, 25, 30, 0.8) !important;
+    border: 1px solid #4a4a4f !important;
+    color: #e0e0e0 !important;
+    border-radius: 3px !important;
+}
+
+.charsheet .weapon-table input:focus,
+.charsheet .equip-table input:focus {
+    border-color: #6a6a6f !important;
+    box-shadow: 0 0 5px rgba(90, 120, 140, 0.3) !important;
+}
+
+/* ========================================= */
+/* MISC FIXES - SLASH, DEATH SAVES, CENTERING */
+/* ========================================= */
+
+/* Slash separators - visible color */
+.charsheet span.slash,
+.charsheet .stat-row span {
+    color: #b8b8b8 !important;
+    font-weight: 600 !important;
+}
+
+/* Death Save button - match initiative/moxie style */
+.charsheet .deathsave-box a.txt-btn {
+    background: linear-gradient(135deg, rgba(50, 50, 55, 0.9) 0%, rgba(40, 40, 45, 0.95) 100%) !important;
+    border: 2px solid #5a5a5f !important;
+    color: #b8b8b8 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    display: block !important;
+    text-align: center !important;
+    font-weight: 600 !important;
+}
+
+.charsheet .deathsave-box a.txt-btn:hover {
+    background: rgba(70, 70, 75, 0.9) !important;
+    border-color: #7a7a7f !important;
+    box-shadow: 0 0 8px rgba(100, 100, 105, 0.4) !important;
+    color: #d4d4d4 !important;
+}
+
+/* Death Save labels - color coded */
+.charsheet .death-save-checks div:first-child span {
+    color: #00ff6a !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 3px rgba(0, 255, 106, 0.5) !important;
+    font-size: 11px !important;
+}
+
+.charsheet .death-save-checks div:last-child span {
+    color: #ff0055 !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 3px rgba(255, 0, 85, 0.5) !important;
+    font-size: 11px !important;
+}
+
+/* Success checkboxes - green */
+.charsheet input[name^="system.death_success"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: rgba(10, 25, 45, 0.9) !important;
+    border: 2px solid #4a6a4f !important;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease !important;
+}
+
+.charsheet input[name^="system.death_success"]:checked {
+    background: rgba(0, 180, 60, 0.3) !important;
+    border-color: #00b43c !important;
+    box-shadow: 0 0 10px rgba(0, 180, 60, 0.5) !important;
+}
+
+.charsheet input[name^="system.death_success"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: #00ff6a;
+    box-shadow: 0 0 8px #00ff6a;
+}
+
+/* Failure checkboxes - red */
+.charsheet input[name^="system.death_failure"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: rgba(25, 10, 15, 0.9) !important;
+    border: 2px solid #6a4a4f !important;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease !important;
+}
+
+.charsheet input[name^="system.death_failure"]:checked {
+    background: rgba(212, 0, 0, 0.3) !important;
+    border-color: #ff0055 !important;
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.5) !important;
+}
+
+.charsheet input[name^="system.death_failure"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: #ff0055;
+    box-shadow: 0 0 8px #ff0055;
+}
+
+/* Perfect button text centering */
+.charsheet a[type^="roll"].txt-btn,
+.charsheet button,
+.charsheet .td-roll-btn,
+.charsheet .hd-roll-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    padding: 8px 12px !important;
+}
+
+/* ========================================= */
+/* IMPROVED READABILITY FOR STAT BOXES      */
+/* ========================================= */
+
+/* All stat box inputs - brighter and more readable */
+.charsheet .stats-container input[type="number"],
+.charsheet .stats-container input[type="text"] {
+    color: #c8c8c8 !important;
+    font-weight: 400 !important;
+}
+
+/* Stat box labels - brighter */
+.charsheet .stats-container label,
+.charsheet .stat-box label {
+    color: #b8b8b8 !important;
+    font-weight: 700 !important;
+    font-size: 11px !important;
+}
+
+/* Initiative, Moxie button text - more visible */
+.charsheet .stats-container a.txt-btn {
+    color: #b8b8b8 !important;
+    font-weight: 700 !important;
+}
+
+/* Determination, HP, Temp HP inputs - better readability */
+.charsheet .name input,
+.charsheet .stat-row input {
+    color: #c8c8c8 !important;
+    font-weight: 400 !important;
 }

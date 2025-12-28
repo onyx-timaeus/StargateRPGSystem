@@ -15,77 +15,84 @@
 
   <!-- NAME SECTION -->
   <section class="name columnflex nowrap">
-    <div class="rowflex nowrap spaced">
-      <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="50" width="50"/>
-      <div class="columnflex nowrap">
-        <label>Name</label>
-        <input name="name" type="text" value="{{actor.name}}">
+    <!-- Profile Picture - First box -->
+    <div class="section profile-img-box">
+      <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+    </div>
+
+    <!-- Character Info - Second box -->
+    <div class="section name-content">
+      <div class="rowflex nowrap spaced">
+        <div class="columnflex nowrap">
+          <label title="Level">Level</label>
+          <input class="w40" name="system.rank" type="number" placeholder="1" value="{{system.rank}}">
+        </div>
+        <div class="columnflex nowrap">
+          <label>Name</label>
+          <input name="name" type="text" value="{{actor.name}}">
+        </div>
+        <div class="columnflex nowrap">
+          <label>Race</label>
+          <input name="system.race" list="race" placeholder="race" type="text" value="{{system.race}}">
+        </div>
+        <div class="columnflex nowrap">
+          <label>Class</label>
+          <input name="system.class" list="rpgclass" placeholder="class" type="text" value="{{system.class}}">
+        </div>
       </div>
-      <div class="columnflex nowrap">
-        <label>Race</label>
-        <input name="system.race" list="race" placeholder="race" type="text" value="{{system.race}}">
-      </div>
-      <div class="columnflex nowrap">
-        <label>Class</label>
-        <input name="system.class" list="rpgclass" placeholder="class" type="text" value="{{system.class}}">
-      </div>
-      <div class="columnflex nowrap">
-        <label title="Level">Level</label>
-        <input class="w40" name="system.rank" type="number" placeholder="1" value="{{system.rank}}">
+
+      <!-- ROW 2: DETERMINATION / TENSION DIE / HIT DICE / EUREKA -->
+      <div class="rowflex nowrap spaced row2">
+        <div class="columnflex nowrap">
+          <label>Determination</label>
+          <div class="rowflex nowrap">
+            <input class="stat w40" name="system.determination.value" type="number" value="{{system.determination.value}}" title="Determination">
+            <span class="slash">/</span>
+            <input class="stat w40" name="system.determination.max" type="number" value="{{system.determination.max}}" title="Max Determination">
+          </div>
+        </div>
+        <div class="columnflex nowrap center">
+          <label title="Tension Die">Tension Die</label>
+          <button type="button" class="td-roll-btn" data-action="rollTD" title="Roll Tension Die">{{system.tensionDie}}</button>
+        </div>
+        <div class="columnflex nowrap center">
+          <label title="Hit Dice">Hit Dice</label>
+          <button type="button" class="hd-roll-btn" data-action="rollHD" title="Roll Hit Dice">{{system.hd}}</button>
+        </div>
+        {{#if system.showEurekaPoints}}
+        <div class="columnflex nowrap eureka">
+          <label>Eureka Points</label>
+          <div class="rowflex nowrap">
+            <input class="w40" name="system.eureka" type="number" placeholder="0" title="Eureka Points" value="{{system.eureka}}">
+            <span>/</span>
+            <input class="w40" name="system.eureka_max" type="number" placeholder="" title="Max Eureka Points" value="{{system.eureka_max}}">
+          </div>
+        </div>
+        {{/if}}
       </div>
     </div>
 
-    <!-- ROW 2: DETERMINATION / TENSION DIE / HIT DICE / EUREKA -->
-    <div class="rowflex nowrap spaced row2">
-      <div class="columnflex nowrap">
-        <label>Determination</label>
-        <div class="rowflex nowrap">
-          <input class="stat w40" name="system.determination.value" type="number" value="{{system.determination.value}}" title="Determination">
-          <span class="slash">/</span>
-          <input class="stat w40" name="system.determination.max" type="number" value="{{system.determination.max}}" title="Max Determination">
+    <!-- DEATH SAVE BOX - Third box -->
+    <div class="deathsave-box">
+      <div class="section death columnflex nowrap center">
+        <a type="roll_deathsave" class="txt-btn large" data-action="rollDeathSave">Death Save</a>
+        <div class="death-save-checks">
+          <div class="rowflex nowrap gap5 aligned">
+            <input name="system.death_success1" type="checkbox" {{checked system.death_success1}}>
+            <input name="system.death_success2" type="checkbox" {{checked system.death_success2}}>
+            <input name="system.death_success3" type="checkbox" {{checked system.death_success3}}>
+            <span>Successes</span>
+          </div>
+          <div class="rowflex nowrap gap5 aligned">
+            <input name="system.death_failure1" type="checkbox" {{checked system.death_failure1}}>
+            <input name="system.death_failure2" type="checkbox" {{checked system.death_failure2}}>
+            <input name="system.death_failure3" type="checkbox" {{checked system.death_failure3}}>
+            <span>Failures</span>
+          </div>
         </div>
       </div>
-      <div class="columnflex nowrap center">
-        <label title="Tension Die">Tension Die</label>
-        <button type="button" class="td-roll-btn" data-action="rollTD" title="Roll Tension Die">{{system.tensionDie}}</button>
-      </div>
-      <div class="columnflex nowrap center">
-        <label title="Hit Dice">Hit Dice</label>
-        <button type="button" class="hd-roll-btn" data-action="rollHD" title="Roll Hit Dice">{{system.hd}}</button>
-      </div>
-      {{#if system.showEurekaPoints}}
-      <div class="columnflex nowrap eureka">
-        <label>Eureka Points</label>
-        <div class="rowflex nowrap">
-          <input class="w40" name="system.eureka" type="number" placeholder="0" title="Eureka Points" value="{{system.eureka}}">
-          <span>/</span>
-          <input class="w40" name="system.eureka_max" type="number" placeholder="" title="Max Eureka Points" value="{{system.eureka_max}}">
-        </div>
-      </div>
-      {{/if}}
     </div>
   </section>
-
-  <!-- DEATH SAVE BOX -->
-  <div class="deathsave-box">
-    <div class="section death columnflex nowrap center">
-      <a type="roll_deathsave" class="txt-btn large" data-action="rollDeathSave">Death Save</a>
-      <div class="death-save-checks">
-        <div class="rowflex nowrap gap5 aligned">
-          <input name="system.death_success1" type="checkbox" {{checked system.death_success1}}>
-          <input name="system.death_success2" type="checkbox" {{checked system.death_success2}}>
-          <input name="system.death_success3" type="checkbox" {{checked system.death_success3}}>
-          <span>Successes</span>
-        </div>
-        <div class="rowflex nowrap gap5 aligned">
-          <input name="system.death_failure1" type="checkbox" {{checked system.death_failure1}}>
-          <input name="system.death_failure2" type="checkbox" {{checked system.death_failure2}}>
-          <input name="system.death_failure3" type="checkbox" {{checked system.death_failure3}}>
-          <span>Failures</span>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ABILITY SCORES (HORIZONTAL BADGES) -->
   <div class="attr rowflex nowrap center">
@@ -108,7 +115,7 @@
         <div class="rowflex nowrap" data-skill="{{s}}">
           <input data_type="skill_prof" name="system.skills.{{s}}.proficient" type="checkbox" {{checked skill.proficient}} title="Proficiency">
           <input class="w30" data_type="skill_value" name="system.skills.{{s}}.value" type="text" value="{{skill.value}}">
-          <a type="roll" class="txt-btn" data-bonus="system.skills.{{s}}.value">{{s}}</a>
+          <a type="roll" class="txt-btn" data-bonus="system.skills.{{s}}.value">{{lookup @root.config.skills s}}</a>
           <span class="skill-ability-label">({{skill.mod}})</span>
         </div>
       {{/each}}
@@ -205,11 +212,10 @@
   </div>
 
   <!-- WEAPONS SECTION -->
-  <div class="weapons-box">
-    <section class="weapons">
-      {{> "systems/sgrpg/templates/sheets/parts/actor-weapon-inventory.hbs"}}
-    </section>
-  </div>
+  <section class="weapons columnflex nowrap center">
+    <h4>Weapons</h4>
+    {{> "systems/sgrpg/templates/sheets/parts/actor-weapon-inventory.hbs"}}
+  </section>
 
 </main>
 

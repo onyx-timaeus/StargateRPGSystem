@@ -146,8 +146,7 @@
     display: flex;
     padding: 5px;
     border: 2px solid black;
-    background: white;
-    opacity: 0.9;
+    background: rgba(60, 60, 60, 0.9);
 }
 .charsheet .columnflex {
     display: flex;
@@ -241,8 +240,179 @@
 }
 
 .charsheet .sg-sheet-body > .tab.active {
-    display: grid;
+    display: block;
+    width: 100%;
 }
+
+/* ===== FOUNDRY VTT OVERRIDE - HIGHEST PRIORITY ===== */
+/* These load LAST to override Foundry defaults */
+
+/* Remove ALL padding from Foundry window wrappers */
+.app.window-app.sheet.actor .window-content,
+.window-app.sheet.actor .window-content,
+.window-app .window-content,
+body .app.sheet.actor section.window-content,
+section.window-content {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Remove padding from window-app itself */
+.app.window-app.sheet.actor,
+.window-app.sheet.actor,
+body .app.sheet.actor {
+    padding: 0 !important;
+}
+
+/* Ensure form fills window width */
+form.charsheet {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Character tab layout - 100% WIDTH EVERYTHING */
+.charsheet main.character {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    background-image: url(https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Stargate-RPG/images/bg.png);
+    background-repeat: no-repeat;
+    background-size: 700px 700px;
+    background-position: center;
+    background-color: black;
+}
+
+/* Name section container - now horizontal with profile pic on left */
+.charsheet main.character > section.name {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    flex: 0 0 auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-self: stretch !important;
+    gap: 10px !important;
+    background: transparent !important;
+    border: none !important;
+    opacity: 1 !important;
+}
+
+/* Profile picture box - matches other section boxes */
+.charsheet main.character > section.name > .profile-img-box {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.charsheet main.character > section.name > .profile-img-box .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Name content - inherits section styling, just needs flex properties */
+.charsheet main.character > section.name > .name-content {
+    flex: 1;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+/* Ensure rows inside name-content display horizontally */
+.charsheet main.character > section.name > .name-content > .rowflex {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 10px !important;
+}
+
+/* Ensure individual field containers inside rows display vertically */
+.charsheet main.character > section.name > .name-content > .rowflex > .columnflex {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
+/* Make input fields in name section wider */
+.charsheet main.character > section.name > .name-content > .rowflex > .columnflex input {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+/* Make Level field narrower */
+.charsheet main.character > section.name > .name-content > .rowflex > .columnflex:nth-child(1) {
+    flex: 0 1 60px !important;
+    min-width: 50px !important;
+    max-width: 70px !important;
+}
+
+/* Make Name field wider */
+.charsheet main.character > section.name > .name-content > .rowflex > .columnflex:nth-child(2) {
+    flex: 2 1 auto !important;
+    min-width: 0 !important;
+}
+
+/* Second row (Determination, Tension Die, Hit Dice, Eureka) - constrain field widths */
+.charsheet main.character > section.name > .name-content > .rowflex.row2 > .columnflex {
+    flex: 0 1 auto !important;
+    max-width: 150px !important;
+}
+
+/* Constrain input widths in second row */
+.charsheet main.character > section.name > .name-content > .rowflex.row2 input {
+    max-width: 60px !important;
+}
+
+/* Eureka field specifically should be narrower */
+.charsheet main.character > section.name > .name-content > .rowflex.row2 .eureka {
+    max-width: 120px !important;
+}
+
+/* Death save box - Third gray box (styling is on .section.death inside) */
+.charsheet main.character > section.name > .deathsave-box {
+    width: 165px !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Attributes (chevrons) */
+.charsheet main.character > .attr {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    justify-content: space-between !important;
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+/* Main content area */
+.charsheet main.character > .main-content-area {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Weapons section */
+.charsheet main.character > section.weapons {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .charsheet div.tab-as {
     display: flex;
     gap: 10px;
@@ -276,9 +446,10 @@
     background-image: url(https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Stargate-RPG/images/attr.png);
     background-repeat: no-repeat;
     background-size: 124px 113px;
-    width: 120px;
+    flex: 1 1 auto;
     height: 120px;
     background-position: center;
+    min-width: 124px;
 }
 .charsheet .attr span:not(.mod) {
     font-weight: bold;
@@ -617,11 +788,16 @@
 
 .charsheet .sg-sheet-body {
     display: block;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* New layout styles for adapted Roll20 character sheet */
 
-/* Update main.character grid to accommodate new layout */
+/* OLD GRID LAYOUT - DISABLED (using flexbox layout above instead) */
+/*
 .charsheet main.character {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -637,10 +813,11 @@
     gap: 5px;
     padding: 5px;
 }
+*/
 
-/* Name section - spans full width */
+/* Name section styling */
 .charsheet section.name {
-    grid-column: span 9;
+    /* grid-column: span 9; */
     padding: 5px;
     margin: 0;
     display: flex;
@@ -753,7 +930,7 @@
 
 /* Death Save Box */
 .charsheet .deathsave-box {
-    grid-column: span 3;
+    /* grid-column: span 3; */
     display: flex;
     align-items: stretch;
     justify-content: center;
@@ -767,8 +944,7 @@
     width: 100%;
     align-items: center;
     gap: 6px;
-    background: white;
-    opacity: 0.9;
+    background: rgba(60, 60, 60, 0.9);
     border: 2px solid black;
     padding: 15px 10px;
 }
@@ -808,13 +984,21 @@
 
 /* Ability scores - horizontal layout */
 .charsheet .attr {
-    grid-column: span 12;
-    background: white;
-    opacity: 0.9;
+    /* grid-column: span 12; */
+    background: rgba(60, 60, 60, 0.9);
     border: 2px solid black;
-    padding: 10px;
+    padding: 15px 10px;
     margin: 0;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-width: 100% !important;
+}
+
+/* Ensure attr with rowflex expands to full width */
+.charsheet .attr.rowflex {
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 .charsheet .attr .txt-btn.large {
@@ -823,10 +1007,10 @@
 
 /* Main content area - skills + right side */
 .charsheet .main-content-area {
-    grid-column: span 12;
-    display: grid;
-    grid-template-columns: 4fr 8fr;
-    gap: 5px;
+    /* grid-column: span 12; */
+    display: grid !important;
+    grid-template-columns: 215px 1fr !important;
+    gap: 2px;
     margin: 0;
 }
 
@@ -834,9 +1018,8 @@
 .charsheet .main-content-area .skills {
     grid-area: unset;
     margin: 0;
-    padding: 10px;
-    background: white;
-    opacity: 0.9;
+    padding: 8px;
+    background: rgba(60, 60, 60, 0.9);
     border: 2px solid black;
 }
 
@@ -845,8 +1028,29 @@
     margin: 0 0 10px 0;
 }
 
+.charsheet .main-content-area .skills .rowflex {
+    gap: 3px;
+    align-items: center;
+}
+
 .charsheet .main-content-area .skills a[type="roll"] {
     text-transform: capitalize;
+    white-space: nowrap;
+    overflow: visible;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.charsheet .main-content-area .skills input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.charsheet .main-content-area .skills input.w30 {
+    flex-shrink: 0;
+    width: 30px;
+    text-align: center;
 }
 
 .charsheet .main-content-area .skills .skill-ability-label {
@@ -854,6 +1058,8 @@
     font-size: 0.75em;
     color: #666;
     align-self: flex-end;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .charsheet .main-content-area .skills .mod {
@@ -890,7 +1096,12 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto auto;
-    gap: 5px;
+    column-gap: 0px !important;
+    row-gap: 0px !important;
+    gap: 0px !important;
+    max-width: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .charsheet .stats-container .stat-box {
@@ -900,19 +1111,28 @@
     align-items: center;
     padding: 8px;
     border: 2px solid black;
-    background: white;
-    opacity: 0.9;
+    background: rgba(60, 60, 60, 0.9);
     min-height: 70px;
+    max-width: 150px;
     gap: 5px;
+    overflow: visible;
+    margin-right: -4px !important;
+    margin-bottom: -4px !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    box-sizing: border-box;
 }
 
 .charsheet .stats-container .stat-box label {
-    font-size: 0.9em;
+    font-size: 0.8em;
     font-weight: bold;
     text-align: center;
-    width: auto;
+    width: 100%;
     margin: 0;
-    line-height: 1;
+    line-height: 1.2;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow: visible;
 }
 
 .charsheet .stats-container .stat-box input[type=number],
@@ -1002,7 +1222,7 @@
 
 /* Weapons section */
 .charsheet .weapons-box {
-    grid-column: span 12;
+    /* grid-column: span 12; */
     margin: 5px;
     background: #f5f5f5;
     opacity: 0.9;
@@ -1026,11 +1246,10 @@
 
 /* Notes section */
 .charsheet .notes-section {
-    grid-column: span 12;
+    /* grid-column: span 12; */
     margin: 0;
     padding: 10px;
-    background: white;
-    opacity: 0.9;
+    background: rgba(60, 60, 60, 0.9);
     border: 2px solid black;
 }
 
@@ -1059,8 +1278,7 @@
 }
 
 .charsheet .advanced-config {
-    background: white;
-    opacity: 0.9;
+    background: rgba(60, 60, 60, 0.9);
     border: 2px solid black;
     padding: 20px;
 }
@@ -1094,8 +1312,7 @@
 }
 
 .charsheet .dice-config {
-    background: white;
-    opacity: 0.9;
+    background: rgba(60, 60, 60, 0.9);
     border: 2px solid black;
     padding: 20px;
 }
@@ -1132,8 +1349,7 @@
 }
 
 .charsheet .skill-config {
-    background: white;
-    opacity: 0.9;
+    background: rgba(60, 60, 60, 0.9);
     border: 2px solid black;
     padding: 20px;
 }

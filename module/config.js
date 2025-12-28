@@ -11,6 +11,29 @@ SGRPG.abilities = {
     "cha": "Charisma"
   };
 
+SGRPG.skills = {
+    "acrobatics": "Acrobatics",
+    "animalhandling": "Animal Handling",
+    "athletics": "Athletics",
+    "culture": "Culture",
+    "deception": "Deception",
+    "engineering": "Engineering",
+    "history": "History",
+    "insight": "Insight",
+    "intimidation": "Intimidation",
+    "investigation": "Investigation",
+    "medicine": "Medicine",
+    "nature": "Nature",
+    "perception": "Perception",
+    "performance": "Performance",
+    "persuasion": "Persuasion",
+    "pilot": "Pilot",
+    "science": "Science",
+    "sleight": "Sleight",
+    "stealth": "Stealth",
+    "survival": "Survival"
+  };
+
 
 SGRPG.attackTypes = {
     piercing: "Piercing",
